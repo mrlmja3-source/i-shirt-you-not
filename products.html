@@ -3,244 +3,240 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Products | I Shirt You Not by Dawn</title>
-    <meta name="description" content="Products and custom tee options by I Shirt You Not by Dawn." />
+    <title>Our Products | I Shirt You Not by Dawn</title>
+    <meta name="description" content="Products and options from I Shirt You Not by Dawn." />
 
     <style>
       :root{
-        --bg:#fff; --text:#111; --muted:#5a5a5a;
-        --card:rgba(255,255,255,.92);
-        --border:rgba(0,0,0,.08);
-        --shadow:0 18px 55px rgba(0,0,0,.12);
-        --max:980px;
+        --bg:#0b0c10;
+        --text:#f5f7ff;
+        --muted:rgba(245,247,255,.70);
+        --border:rgba(255,255,255,.14);
+        --card:rgba(255,255,255,.08);
+        --shadow:0 30px 90px rgba(0,0,0,.55);
+        --glow:0 0 40px rgba(255,165,0,.25), 0 0 60px rgba(0,170,255,.18);
+        --accent1:#ff9a00;
+        --accent2:#00b3ff;
+        --max:1080px;
       }
       *{box-sizing:border-box}
       body{
         margin:0;
-        font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
-        background:var(--bg); color:var(--text);
+        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+        color:var(--text);
+        background: radial-gradient(1000px 700px at 20% 15%, rgba(255,154,0,.16), transparent 60%),
+                    radial-gradient(900px 600px at 80% 25%, rgba(0,179,255,.14), transparent 55%),
+                    var(--bg);
+        overflow-x:hidden;
       }
-      .bg{
+      .fx{
         position:fixed; inset:0; pointer-events:none;
         background:
-          radial-gradient(1200px 600px at 20% 10%, rgba(0,0,0,0.05), transparent 55%),
-          radial-gradient(900px 500px at 80% 30%, rgba(0,0,0,0.04), transparent 55%),
-          radial-gradient(700px 450px at 40% 90%, rgba(0,0,0,0.03), transparent 55%);
+          radial-gradient(1200px 600px at 50% 0%, rgba(255,255,255,.06), transparent 60%),
+          url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='.12'/%3E%3C/svg%3E");
+        mix-blend-mode: overlay;
+        opacity:.30;
       }
-      .wrap{min-height:100%; padding:22px 16px 40px; display:grid; place-items:start center}
+      .wrap{min-height:100%; padding:24px 16px 44px; display:grid; place-items:start center}
       .container{width:min(var(--max),100%); display:grid; gap:18px}
       header{
-        width:100%;
-        display:flex; align-items:center; justify-content:space-between;
+        display:flex; align-items:center; justify-content:space-between; gap:12px;
         padding:10px 6px;
       }
-      .brand{font-weight:900; letter-spacing:.2px; display:flex; align-items:center; gap:10px}
-      .dot{width:10px; height:10px; border-radius:999px; background:#111; display:inline-block}
+      .brand{display:flex; align-items:center; gap:12px; font-weight:950}
+      .brandDot{
+        width:10px; height:10px; border-radius:999px;
+        background: linear-gradient(90deg, var(--accent1), var(--accent2));
+        box-shadow: var(--glow);
+      }
       .nav{display:flex; gap:10px; flex-wrap:wrap; justify-content:center}
       .nav a{
         text-decoration:none; color:var(--text);
         border:1px solid var(--border);
-        padding:8px 12px; border-radius:12px;
-        font-weight:700; font-size:14px;
-        background:rgba(255,255,255,.7);
+        background: rgba(255,255,255,.06);
+        padding:9px 12px; border-radius:14px;
+        font-weight:800; font-size:14px;
+        backdrop-filter: blur(10px);
       }
-      .nav a:hover{background:#f3f3f3}
-
+      .nav a:hover{background: rgba(255,255,255,.10)}
       .panel{
-        background:var(--card);
         border:1px solid var(--border);
-        border-radius:22px;
-        box-shadow:var(--shadow);
-        padding:18px;
+        border-radius:26px;
+        background: linear-gradient(180deg, rgba(255,255,255,.09), rgba(255,255,255,.05));
+        box-shadow: var(--shadow);
+        overflow:hidden;
       }
-
-      .titleRow{
-        display:flex; align-items:flex-end; justify-content:space-between;
-        gap:12px; flex-wrap:wrap;
+      .panelInner{padding:18px}
+      .top{
+        display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;
+        margin-bottom:12px;
       }
-      h1{margin:0; font-size:clamp(20px,2.2vw,26px); font-weight:950}
-      .sub{margin:6px 0 0; color:var(--muted); line-height:1.4}
+      h1{margin:0; font-size: clamp(22px, 2.6vw, 34px); font-weight:1000}
+      .sub{margin:6px 0 0; color:var(--muted); line-height:1.5}
+      .logoMini{
+        height:52px; width:auto; border-radius:12px; background:#fff; padding:6px;
+        box-shadow: 0 10px 40px rgba(0,0,0,.45);
+      }
 
       .grid{
-        margin-top:16px;
+        margin-top:14px;
         display:grid;
-        grid-template-columns:repeat(3, minmax(0,1fr));
+        grid-template-columns: repeat(3, minmax(0, 1fr));
         gap:14px;
       }
       .card{
-        border:1px solid var(--border);
-        border-radius:18px;
+        border:1px solid rgba(255,255,255,.14);
+        background: rgba(0,0,0,.22);
+        border-radius:20px;
         overflow:hidden;
-        background:#fff;
         display:grid;
       }
       .thumb{
         aspect-ratio: 4 / 3;
-        background:
-          linear-gradient(135deg, rgba(0,0,0,.06), rgba(0,0,0,.02));
+        background: linear-gradient(135deg, rgba(255,154,0,.15), rgba(0,179,255,.12));
         display:grid; place-items:center;
-        font-weight:850;
-        color:rgba(0,0,0,.35);
-        letter-spacing:.4px;
+        color: rgba(245,247,255,.75);
+        font-weight: 950;
+        letter-spacing: .8px;
+        text-transform: uppercase;
       }
+      /* If you add product images later, drop them in and use <img> */
       .thumb img{width:100%; height:100%; object-fit:cover; display:block}
-      .body{padding:12px; display:grid; gap:8px}
-      .name{font-weight:900}
-      .meta{display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap}
-      .price{font-weight:900}
+
+      .body{padding:14px; display:grid; gap:10px}
+      .name{font-weight:1000; letter-spacing:.2px}
+      .row{display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap}
+      .price{font-weight:1000}
       .pill{
-        font-size:12px;
-        font-weight:800;
-        padding:6px 10px;
+        font-size:12px; font-weight:900;
+        padding:7px 10px;
         border-radius:999px;
-        border:1px solid rgba(0,0,0,.12);
-        background:#f4f4f4;
-        color:#111;
+        border:1px solid rgba(255,255,255,.14);
+        background: rgba(255,255,255,.06);
+        color: rgba(245,247,255,.90);
       }
       .btn{
-        margin-top:8px;
-        display:inline-flex;
-        justify-content:center;
-        align-items:center;
         text-decoration:none;
-        font-weight:900;
-        border-radius:12px;
-        padding:10px 12px;
-        border:1px solid rgba(0,0,0,.12);
-        background:#111;
-        color:#fff;
+        border-radius:14px;
+        padding:11px 12px;
+        font-weight:1000;
+        letter-spacing:.2px;
+        border:1px solid rgba(255,255,255,.14);
+        background: linear-gradient(90deg, var(--accent1), var(--accent2));
+        color:#0b0c10;
+        display:inline-flex;
+        align-items:center;
+        justify-content:center;
+        box-shadow: var(--glow);
       }
-      .btn:hover{background:#000}
-
+      .btn:hover{filter:brightness(1.05)}
       .note{
         margin-top:14px;
-        color:var(--muted);
-        font-size:13px;
+        color: var(--muted);
+        font-size: 13px;
         line-height:1.45;
       }
-
-      footer{ text-align:center; color:rgba(0,0,0,.45); font-size:12px; margin-top:14px }
+      footer{
+        text-align:center;
+        color: rgba(245,247,255,.55);
+        font-size: 12px;
+        margin-top: 10px;
+      }
 
       @media (max-width: 900px){
-        .grid{grid-template-columns:repeat(2, minmax(0,1fr))}
+        .grid{grid-template-columns: repeat(2, minmax(0,1fr))}
       }
       @media (max-width: 520px){
-        header{flex-direction:column; gap:10px}
-        .grid{grid-template-columns:1fr}
+        header{flex-direction:column; align-items:flex-start}
+        .grid{grid-template-columns: 1fr}
       }
     </style>
   </head>
-
   <body>
-    <div class="bg" aria-hidden="true"></div>
+    <div class="fx" aria-hidden="true"></div>
 
     <main class="wrap">
       <div class="container">
         <header>
-          <div class="brand"><span class="dot"></span> I Shirt You Not</div>
+          <div class="brand"><span class="brandDot"></span> I Shirt You Not — by Dawn</div>
           <nav class="nav" aria-label="Primary">
             <a href="index.html">Home</a>
-            <a href="products.html">Products</a>
-            <a href="contact.html">Contact</a>
+            <a href="products.html">Our Products</a>
+            <a href="contact.html">Contact Us</a>
           </nav>
         </header>
 
         <section class="panel">
-          <div class="titleRow">
-            <div>
-              <h1>Products</h1>
-              <p class="sub">Pick a style, or request a custom design. Replace the placeholders with your real items.</p>
+          <div class="panelInner">
+            <div class="top">
+              <div>
+                <h1>Our Products</h1>
+                <p class="sub">These are placeholders — swap names/prices whenever you want. Buttons go to Contact for quotes.</p>
+              </div>
+              <img class="logoMini" src="logo.png" alt="Logo" />
             </div>
-            <img src="logo.png" alt="Logo" style="height:54px; width:auto; border-radius:10px;" />
+
+            <div class="grid">
+              <article class="card">
+                <div class="thumb">Classic Tee</div>
+                <div class="body">
+                  <div class="name">Classic Tee (Unisex)</div>
+                  <div class="row"><div class="price">$20+</div><span class="pill">Best Seller</span></div>
+                  <a class="btn" href="contact.html">Get a Quote</a>
+                </div>
+              </article>
+
+              <article class="card">
+                <div class="thumb">Ladies Fit</div>
+                <div class="body">
+                  <div class="name">Ladies Fit Tee</div>
+                  <div class="row"><div class="price">$22+</div><span class="pill">Soft Feel</span></div>
+                  <a class="btn" href="contact.html">Get a Quote</a>
+                </div>
+              </article>
+
+              <article class="card">
+                <div class="thumb">Hoodie</div>
+                <div class="body">
+                  <div class="name">Hoodie</div>
+                  <div class="row"><div class="price">$35+</div><span class="pill">Seasonal</span></div>
+                  <a class="btn" href="contact.html">Get a Quote</a>
+                </div>
+              </article>
+
+              <article class="card">
+                <div class="thumb">Crewneck</div>
+                <div class="body">
+                  <div class="name">Crewneck Sweatshirt</div>
+                  <div class="row"><div class="price">$32+</div><span class="pill">Clean</span></div>
+                  <a class="btn" href="contact.html">Get a Quote</a>
+                </div>
+              </article>
+
+              <article class="card">
+                <div class="thumb">Bulk</div>
+                <div class="body">
+                  <div class="name">Teams / Bulk Orders</div>
+                  <div class="row"><div class="price">Quote</div><span class="pill">Discounts</span></div>
+                  <a class="btn" href="contact.html">Get a Quote</a>
+                </div>
+              </article>
+
+              <article class="card">
+                <div class="thumb">Design</div>
+                <div class="body">
+                  <div class="name">Custom Design Help</div>
+                  <div class="row"><div class="price">$10+</div><span class="pill">Artwork</span></div>
+                  <a class="btn" href="contact.html">Get a Quote</a>
+                </div>
+              </article>
+            </div>
+
+            <p class="note">
+              Want “Add to Cart” checkout? GitHub Pages can’t do payments by itself. If you use Etsy/Shopify/Square/PayPal links,
+              tell me which one and I’ll wire the buttons properly.
+            </p>
           </div>
-
-          <div class="grid">
-            <!-- PRODUCT 1 -->
-            <article class="card">
-              <div class="thumb" aria-label="Product image">
-                <!-- If you have an image, use: <img src="tee1.jpg" alt="..." /> -->
-                IMAGE
-              </div>
-              <div class="body">
-                <div class="name">Classic Tee (Unisex)</div>
-                <div class="meta">
-                  <div class="price">$20+</div>
-                  <span class="pill">Best seller</span>
-                </div>
-                <a class="btn" href="contact.html">Order / Quote</a>
-              </div>
-            </article>
-
-            <!-- PRODUCT 2 -->
-            <article class="card">
-              <div class="thumb">IMAGE</div>
-              <div class="body">
-                <div class="name">Ladies Fit Tee</div>
-                <div class="meta">
-                  <div class="price">$22+</div>
-                  <span class="pill">Soft feel</span>
-                </div>
-                <a class="btn" href="contact.html">Order / Quote</a>
-              </div>
-            </article>
-
-            <!-- PRODUCT 3 -->
-            <article class="card">
-              <div class="thumb">IMAGE</div>
-              <div class="body">
-                <div class="name">Hoodie</div>
-                <div class="meta">
-                  <div class="price">$35+</div>
-                  <span class="pill">Seasonal</span>
-                </div>
-                <a class="btn" href="contact.html">Order / Quote</a>
-              </div>
-            </article>
-
-            <!-- PRODUCT 4 -->
-            <article class="card">
-              <div class="thumb">IMAGE</div>
-              <div class="body">
-                <div class="name">Crewneck Sweatshirt</div>
-                <div class="meta">
-                  <div class="price">$32+</div>
-                  <span class="pill">Clean look</span>
-                </div>
-                <a class="btn" href="contact.html">Order / Quote</a>
-              </div>
-            </article>
-
-            <!-- PRODUCT 5 -->
-            <article class="card">
-              <div class="thumb">IMAGE</div>
-              <div class="body">
-                <div class="name">Bulk/Team Orders</div>
-                <div class="meta">
-                  <div class="price">Quote</div>
-                  <span class="pill">Discounts</span>
-                </div>
-                <a class="btn" href="contact.html">Get Quote</a>
-              </div>
-            </article>
-
-            <!-- PRODUCT 6 -->
-            <article class="card">
-              <div class="thumb">IMAGE</div>
-              <div class="body">
-                <div class="name">Custom Design Add-On</div>
-                <div class="meta">
-                  <div class="price">$10+</div>
-                  <span class="pill">Artwork</span>
-                </div>
-                <a class="btn" href="contact.html">Request</a>
-              </div>
-            </article>
-          </div>
-
-          <p class="note">
-            Want this page to show real “Add to cart” checkout? GitHub Pages can’t do that by itself.
-            You’ll need a shop platform (Etsy/Shopify/Square) or a payment link (PayPal/Stripe) and we’ll wire the buttons.
-          </p>
         </section>
 
         <footer>© <span id="year"></span> I Shirt You Not by Dawn</footer>
