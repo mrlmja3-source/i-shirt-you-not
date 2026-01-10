@@ -53,7 +53,7 @@
       --radius: 22px;
       --max: 1100px;
 
-      /* New mature button palette */
+      /* Mature button palette (no rainbow) */
       --btn:#0b1220;
       --btnHover:#0f172a;
       --btnText:#ffffff;
@@ -190,7 +190,6 @@
       cursor:pointer;
     }
 
-    /* Mature primary button (no rainbow) */
     .btnPrimary{
       background: var(--btn);
       border-color: rgba(2,6,23,.25);
@@ -212,20 +211,6 @@
       transform: translateY(-2px);
       background: #f8fafc;
       box-shadow: 0 14px 30px rgba(2,6,23,.12);
-    }
-
-    /* Back button (subtle, consistent) */
-    .btnBack{
-      min-width: 140px;
-      background: rgba(255,255,255,.95);
-      border-color: rgba(2,6,23,.14);
-      color: rgba(2,6,23,.85);
-      box-shadow: 0 10px 24px rgba(2,6,23,.06);
-    }
-    .btnBack:hover{
-      transform: translateY(-2px);
-      background: #ffffff;
-      box-shadow: 0 14px 30px rgba(2,6,23,.10);
     }
 
     .grid{
@@ -309,7 +294,6 @@
         </p>
 
         <div class="ctaRow">
-          <button class="btn btnBack" type="button" id="backBtn" aria-label="Go back">← Back</button>
           <a class="btn btnPrimary" href="products.html">Browse Products</a>
           <a class="btn btnGhost" href="contact.html">Request a Quote</a>
         </div>
@@ -339,12 +323,6 @@
 
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
-
-    // Smart back: if there's history, go back; otherwise go home.
-    document.getElementById("backBtn").addEventListener("click", () => {
-      if (window.history.length > 1) window.history.back();
-      else window.location.href = "index.html";
-    });
   </script>
 </body>
 </html>
