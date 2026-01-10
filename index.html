@@ -79,7 +79,7 @@
 
     .wrap{
       min-height: 100vh;
-      min-height: 100dvh; /* better on mobile browsers */
+      min-height: 100dvh;
       display:grid;
       place-items:start center;
       padding: 14px 14px 34px;
@@ -125,17 +125,8 @@
       background: #fff;
     }
 
-    /* Main hero card */
-    .hero{
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      background: linear-gradient(180deg, #ffffff, var(--soft));
-      box-shadow: var(--shadow);
-      overflow:hidden;
-    }
-
-    .heroInner{
-      padding: 16px;
+    /* Main content wrapper (replaces hero/heroInner) */
+    main{
       display:grid;
       gap: 14px;
     }
@@ -264,7 +255,6 @@
     /* Strong mobile polish */
     @media (max-width: 520px){
       .wrap{padding: 12px 12px 28px;}
-      .heroInner{padding: 14px;}
       .logoStage{padding: 12px;}
       .ctaRow{gap: 10px;}
       .btn{width:100%; min-width: 0;}
@@ -294,37 +284,35 @@
         </nav>
       </header>
 
-      <main class="hero" role="main">
-        <div class="heroInner">
-          <section class="logoStage" aria-label="Brand logo">
-            <img class="logo" src="logo.png" alt="I Shirt You Not by Dawn logo" />
-          </section>
+      <main role="main">
+        <section class="logoStage" aria-label="Brand logo">
+          <img class="logo" src="logo.png" alt="I Shirt You Not by Dawn logo" />
+        </section>
 
-          <h1 class="title">Custom Tees With Attitude</h1>
-          <p class="subtitle">
-            One-offs, bulk/team orders, and design help — built to look clean and print sharp.
-          </p>
+        <h1 class="title">Custom Tees With Attitude</h1>
+        <p class="subtitle">
+          One-offs, bulk/team orders, and design help — built to look clean and print sharp.
+        </p>
 
-          <div class="ctaRow">
-            <a class="btn btnPrimary" href="products.html">Browse Products</a>
-            <a class="btn btnGhost" href="contact.html">Request a Quote</a>
-          </div>
-
-          <section class="grid" aria-label="Highlights">
-            <div class="card">
-              <div class="cardTitle">One-Off Shirts</div>
-              <p class="cardText">Gifts, birthdays, events, or “I need this on a shirt” moments.</p>
-            </div>
-            <div class="card">
-              <div class="cardTitle">Bulk & Teams</div>
-              <p class="cardText">Work crews, school groups, reunions — consistent print quality and pricing.</p>
-            </div>
-            <div class="card">
-              <div class="cardTitle">Design Help</div>
-              <p class="cardText">Send the idea. We’ll refine it so it prints clean and looks legit.</p>
-            </div>
-          </section>
+        <div class="ctaRow">
+          <a class="btn btnPrimary" href="products.html">Browse Products</a>
+          <a class="btn btnGhost" href="contact.html">Request a Quote</a>
         </div>
+
+        <section class="grid" aria-label="Highlights">
+          <div class="card">
+            <div class="cardTitle">One-Off Shirts</div>
+            <p class="cardText">Gifts, birthdays, events, or “I need this on a shirt” moments.</p>
+          </div>
+          <div class="card">
+            <div class="cardTitle">Bulk & Teams</div>
+            <p class="cardText">Work crews, school groups, reunions — consistent print quality and pricing.</p>
+          </div>
+          <div class="card">
+            <div class="cardTitle">Design Help</div>
+            <p class="cardText">Send the idea. We’ll refine it so it prints clean and looks legit.</p>
+          </div>
+        </section>
       </main>
 
       <footer>
