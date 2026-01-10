@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>I Shirt You Not by Dawn</title>
+    <meta name="description" content="I Shirt You Not by Dawn — Custom tees with attitude." />
+    <style>
+      :root{
+        --bg:#fff; --text:#111; --muted:#5a5a5a;
+        --card:rgba(255,255,255,.92);
+        --border:rgba(0,0,0,.08);
+        --shadow:0 18px 55px rgba(0,0,0,.12);
+        --btn:#111; --btnText:#fff; --btn2:#fff; --btn2Text:#111;
+        --max:980px;
+      }
+      *{box-sizing:border-box}
+      html,body{height:100%}
+      body{
+        margin:0;
+        font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
+        background:var(--bg); color:var(--text);
+      }
+      .bg{
+        position:fixed; inset:0; pointer-events:none;
+        background:
+          radial-gradient(1200px 600px at 20% 10%, rgba(0,0,0,0.05), transparent 55%),
+          radial-gradient(900px 500px at 80% 30%, rgba(0,0,0,0.04), transparent 55%),
+          radial-gradient(700px 450px at 40% 90%, rgba(0,0,0,0.03), transparent 55%);
+      }
+      .wrap{min-height:100%; display:grid; place-items:center; padding:28px 16px}
+      .container{width:min(var(--max),100%); display:grid; gap:18px; justify-items:center}
+      header{
+        width:100%;
+        display:flex; align-items:center; justify-content:space-between;
+        padding:10px 6px;
+      }
+      .nav{
+        display:flex; gap:10px; flex-wrap:wrap; justify-content:center;
+      }
+      .nav a{
+        text-decoration:none; color:var(--text);
+        border:1px solid var(--border);
+        padding:8px 12px; border-radius:12px;
+        font-weight:700; font-size:14px;
+        background:rgba(255,255,255,.7);
+      }
+      .nav a:hover{background:#f3f3f3}
+      .brand{
+        font-weight:850; letter-spacing:.2px;
+        display:flex; align-items:center; gap:10px;
+      }
+      .dot{
+        width:10px; height:10px; border-radius:999px; background:#111;
+        display:inline-block;
+      }
+      .hero{
+        width:min(760px,100%);
+        background:var(--card);
+        border:1px solid var(--border);
+        border-radius:22px;
+        box-shadow:var(--shadow);
+        padding:22px 18px;
+        display:grid; gap:14px; justify-items:center;
+        text-align:center;
+      }
+      .logo{width:min(520px,92vw); height:auto; display:block}
+      h1{margin:0; font-size:clamp(20px,2.4vw,26px); font-weight:900}
+      p{margin:0; color:var(--muted); font-size:clamp(14px,1.8vw,16px); line-height:1.4}
+      .actions{display:flex; flex-wrap:wrap; gap:10px; justify-content:center; margin-top:6px}
+      .btn{
+        appearance:none;
+        border:1px solid rgba(0,0,0,.12);
+        background:var(--btn); color:var(--btnText);
+        padding:10px 14px;
+        border-radius:12px;
+        font-weight:800;
+        letter-spacing:.2px;
+        cursor:pointer;
+        text-decoration:none;
+        display:inline-flex; align-items:center; justify-content:center;
+        min-width:160px;
+        transition:transform 120ms ease, box-shadow 120ms ease, background 120ms ease;
+      }
+      .btn:hover{transform:translateY(-1px); box-shadow:0 10px 22px rgba(0,0,0,.12); background:#000}
+      .btn.secondary{background:var(--btn2); color:var(--btn2Text)}
+      .btn.secondary:hover{background:#f3f3f3}
+      footer{text-align:center; color:rgba(0,0,0,.45); font-size:12px; margin-top:10px}
+      @media (max-width:480px){
+        .hero{padding:18px 14px; border-radius:18px}
+        .btn{width:100%; max-width:340px}
+        header{flex-direction:column; gap:10px}
+      }
+    </style>
+  </head>
+  <body>
+    <div class="bg" aria-hidden="true"></div>
+
+    <main class="wrap">
+      <div class="container">
+        <header>
+          <div class="brand"><span class="dot"></span> I Shirt You Not</div>
+          <nav class="nav" aria-label="Primary">
+            <a href="index.html">Home</a>
+            <a href="products.html">Products</a>
+            <a href="contact.html">Contact</a>
+          </nav>
+        </header>
+
+        <section class="hero">
+          <img class="logo" src="logo.png" alt="I Shirt You Not by Dawn logo" />
+          <h1>I Shirt You Not — by Dawn</h1>
+          <p>Custom tees with attitude. Clean prints, fast turnaround, zero drama.</p>
+
+          <div class="actions">
+            <a class="btn" href="products.html">Browse Products</a>
+            <a class="btn secondary" href="contact.html">Request a Custom Order</a>
+          </div>
+        </section>
+
+        <footer>© <span id="year"></span> I Shirt You Not by Dawn</footer>
+      </div>
+    </main>
+
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>
