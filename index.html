@@ -8,17 +8,21 @@
 
     <style>
       :root{
-        --bg:#0b0c10;
-        --card:rgba(255,255,255,.08);
-        --card2:rgba(255,255,255,.06);
-        --text:#f5f7ff;
-        --muted:rgba(245,247,255,.70);
-        --border:rgba(255,255,255,.14);
-        --shadow:0 30px 90px rgba(0,0,0,.55);
-        --glow:0 0 40px rgba(255,165,0,.25), 0 0 60px rgba(0,170,255,.18);
-        --max:1080px;
-        --accent1:#ff9a00;
-        --accent2:#00b3ff;
+        --bg:#ffffff;
+        --surface:#ffffff;
+        --surface2:#fbfbfc;
+        --ink:#0b0c10;
+        --muted:#4b5563;
+        --line:rgba(2,6,23,.10);
+        --line2:rgba(2,6,23,.08);
+        --shadow: 0 28px 80px rgba(2,6,23,.10);
+        --shadow2: 0 14px 40px rgba(2,6,23,.08);
+        --shadow3: 0 10px 30px rgba(2,6,23,.06);
+        --max:1100px;
+
+        --accent1:#ff2d55;   /* hot pink-red */
+        --accent2:#ffb703;   /* gold */
+        --accent3:#00b3ff;   /* electric blue */
       }
 
       *{box-sizing:border-box}
@@ -26,30 +30,29 @@
       body{
         margin:0;
         font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
-        color:var(--text);
-        background: radial-gradient(1000px 700px at 20% 15%, rgba(255,154,0,.16), transparent 60%),
-                    radial-gradient(900px 600px at 80% 25%, rgba(0,179,255,.14), transparent 55%),
-                    radial-gradient(900px 650px at 50% 95%, rgba(255,255,255,.06), transparent 60%),
-                    var(--bg);
+        color:var(--ink);
+        background: var(--bg);
         overflow-x:hidden;
       }
 
-      /* animated grain + subtle streaks */
-      .fx{
-        position:fixed; inset:0; pointer-events:none;
+      /* clean subtle accent aura (still white background) */
+      .aura{
+        position:fixed; inset:-240px;
+        pointer-events:none;
         background:
-          repeating-linear-gradient(115deg, rgba(255,255,255,.05) 0 1px, transparent 1px 12px),
-          radial-gradient(1200px 600px at 50% 0%, rgba(255,255,255,.06), transparent 60%),
-          url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='.12'/%3E%3C/svg%3E");
-        mix-blend-mode: overlay;
-        opacity:.35;
+          radial-gradient(900px 700px at 10% 15%, rgba(255,45,85,.10), transparent 60%),
+          radial-gradient(900px 700px at 90% 20%, rgba(0,179,255,.10), transparent 60%),
+          radial-gradient(900px 700px at 50% 95%, rgba(255,183,3,.10), transparent 60%);
+        filter: blur(2px);
+        opacity:1;
       }
 
       .wrap{
         min-height:100%;
         display:grid;
         place-items:center;
-        padding:24px 16px 42px;
+        padding:28px 16px 52px;
+        position:relative;
       }
 
       .container{
@@ -58,62 +61,92 @@
         gap:18px;
       }
 
+      /* Top header */
       header{
         display:flex;
         align-items:center;
         justify-content:space-between;
-        gap:12px;
+        gap:14px;
         padding:10px 6px;
       }
 
       .brand{
         display:flex; align-items:center; gap:12px;
-        font-weight:950; letter-spacing:.25px;
+        font-weight:950; letter-spacing:.2px;
+        line-height:1;
       }
-      .brandDot{
-        width:10px; height:10px; border-radius:999px;
-        background: linear-gradient(90deg, var(--accent1), var(--accent2));
-        box-shadow: var(--glow);
+
+      .brandMark{
+        width:40px; height:40px;
+        border-radius:14px;
+        background:
+          radial-gradient(18px 18px at 30% 30%, rgba(255,255,255,.85), rgba(255,255,255,0) 60%),
+          linear-gradient(135deg, var(--accent1), var(--accent2), var(--accent3));
+        box-shadow: 0 14px 30px rgba(2,6,23,.12);
+        border:1px solid rgba(255,255,255,.55);
+      }
+
+      .brandText{
+        display:flex; flex-direction:column;
+        gap:3px;
+      }
+
+      .brandText strong{
+        font-size:14px;
+        text-transform:uppercase;
+        letter-spacing:.14em;
+      }
+      .brandText span{
+        font-size:12px;
+        color:var(--muted);
+        font-weight:700;
       }
 
       .nav{
         display:flex; gap:10px; flex-wrap:wrap;
         justify-content:center;
       }
+
       .nav a{
         text-decoration:none;
-        color:var(--text);
-        border:1px solid var(--border);
-        background: rgba(255,255,255,.06);
-        padding:9px 12px;
+        color:var(--ink);
+        border:1px solid var(--line);
+        background: rgba(255,255,255,.85);
+        padding:10px 12px;
         border-radius:14px;
-        font-weight:800;
+        font-weight:900;
         font-size:14px;
-        backdrop-filter: blur(10px);
-        transition: transform 140ms ease, background 140ms ease, border-color 140ms ease;
+        box-shadow: var(--shadow3);
+        transition: transform 140ms ease, box-shadow 140ms ease, background 140ms ease;
       }
       .nav a:hover{
-        transform: translateY(-1px);
-        background: rgba(255,255,255,.10);
-        border-color: rgba(255,255,255,.22);
+        transform: translateY(-2px);
+        box-shadow: var(--shadow2);
+        background:#fff;
       }
 
+      /* Hero Card */
       .hero{
         position:relative;
-        border:1px solid var(--border);
-        border-radius:26px;
-        background: linear-gradient(180deg, rgba(255,255,255,.09), rgba(255,255,255,.05));
+        border:1px solid var(--line);
+        border-radius:28px;
+        background: rgba(255,255,255,.92);
         box-shadow: var(--shadow);
         overflow:hidden;
       }
 
-      /* neon rim */
+      /* dope border glow without changing white background */
       .hero::before{
         content:"";
         position:absolute; inset:-2px;
-        background: conic-gradient(from 180deg, rgba(255,154,0,.55), rgba(0,179,255,.45), rgba(255,154,0,.55));
+        background: conic-gradient(from 180deg,
+          rgba(255,45,85,.55),
+          rgba(255,183,3,.55),
+          rgba(0,179,255,.55),
+          rgba(255,45,85,.55)
+        );
         filter: blur(18px);
-        opacity:.35;
+        opacity:.22;
         pointer-events:none;
       }
 
@@ -121,8 +154,17 @@
         position:relative;
         display:grid;
         gap:16px;
-        padding:22px;
-        backdrop-filter: blur(12px);
+        padding:26px;
+        background:
+          linear-gradient(180deg, rgba(255,255,255,.92), rgba(255,255,255,.86)),
+          radial-gradient(1200px 800px at 50% 0%, rgba(2,6,23,.03), transparent 60%);
+      }
+
+      .topRow{
+        display:grid;
+        grid-template-columns: 1.2fr .8fr;
+        gap:18px;
+        align-items:stretch;
       }
 
       .logoWrap{
@@ -130,57 +172,89 @@
         place-items:center;
         padding:18px 14px;
         border-radius:22px;
-        border:1px solid rgba(255,255,255,.12);
-        background: rgba(0,0,0,.22);
-        box-shadow: 0 18px 55px rgba(0,0,0,.45);
+        border:1px solid var(--line2);
+        background: var(--surface2);
+        box-shadow: var(--shadow2);
       }
 
       .logo{
         width: min(560px, 92vw);
         height:auto;
         display:block;
-        border-radius:16px;
+        border-radius:18px;
         background:#fff; /* helps if logo has transparent edges */
-        padding:14px;
-        box-shadow: 0 18px 60px rgba(0,0,0,.55);
+        padding:16px;
+        box-shadow: 0 16px 50px rgba(2,6,23,.10);
+        border:1px solid rgba(2,6,23,.08);
+      }
+
+      .rightPanel{
+        border-radius:22px;
+        border:1px solid var(--line2);
+        background:
+          radial-gradient(700px 300px at 20% 10%, rgba(255,45,85,.10), transparent 60%),
+          radial-gradient(700px 300px at 90% 20%, rgba(0,179,255,.10), transparent 60%),
+          radial-gradient(700px 300px at 50% 95%, rgba(255,183,3,.10), transparent 60%),
+          #ffffff;
+        box-shadow: var(--shadow2);
+        padding:18px;
+        display:grid;
+        gap:10px;
+        align-content:start;
+      }
+
+      .kicker{
+        display:inline-flex;
+        align-items:center;
+        gap:10px;
+        font-weight:950;
+        font-size:12px;
+        text-transform:uppercase;
+        letter-spacing:.14em;
+        color: rgba(2,6,23,.72);
+      }
+
+      .kickerDot{
+        width:10px; height:10px; border-radius:999px;
+        background: linear-gradient(90deg, var(--accent1), var(--accent3));
+        box-shadow: 0 10px 18px rgba(0,0,0,.10);
       }
 
       h1{
         margin:0;
-        font-size: clamp(26px, 3.4vw, 44px);
+        font-size: clamp(28px, 3.6vw, 50px);
         font-weight: 1000;
-        letter-spacing: .2px;
-        line-height: 1.05;
-        text-align:center;
+        letter-spacing: -.02em;
+        line-height: 1.02;
       }
 
       .sub{
         margin:0;
-        text-align:center;
         color:var(--muted);
-        font-size: clamp(14px, 2vw, 18px);
-        line-height:1.5;
+        font-size: clamp(14px, 1.6vw, 18px);
+        line-height:1.55;
+        font-weight:650;
       }
 
       .chips{
         display:flex; flex-wrap:wrap; gap:10px;
-        justify-content:center;
-        margin-top:4px;
+        margin-top:6px;
       }
+
       .chip{
-        border:1px solid rgba(255,255,255,.14);
-        background: rgba(255,255,255,.06);
+        border:1px solid var(--line);
+        background:#fff;
         border-radius: 999px;
-        padding: 8px 12px;
-        font-weight: 850;
+        padding: 9px 12px;
+        font-weight: 900;
         font-size: 13px;
-        color: rgba(245,247,255,.88);
+        color: rgba(2,6,23,.86);
+        box-shadow: 0 10px 22px rgba(2,6,23,.06);
       }
 
       .actions{
         display:flex; flex-wrap:wrap; gap:12px;
-        justify-content:center;
-        margin-top:8px;
+        margin-top:10px;
       }
 
       .btn{
@@ -189,85 +263,118 @@
         padding:12px 16px;
         font-weight:950;
         letter-spacing:.2px;
-        border:1px solid rgba(255,255,255,.14);
+        border:1px solid var(--line);
         display:inline-flex;
         align-items:center;
         justify-content:center;
         min-width: 190px;
-        transition: transform 140ms ease, box-shadow 140ms ease, background 140ms ease;
+        transition: transform 140ms ease, box-shadow 140ms ease, filter 140ms ease, background 140ms ease;
         user-select:none;
       }
+
       .btn.primary{
-        background: linear-gradient(90deg, var(--accent1), var(--accent2));
+        background: linear-gradient(90deg, var(--accent1), var(--accent2), var(--accent3));
         color:#0b0c10;
-        box-shadow: var(--glow);
-        border-color: rgba(255,255,255,.10);
+        border-color: rgba(255,255,255,.25);
+        box-shadow: 0 18px 40px rgba(255,45,85,.18), 0 18px 40px rgba(0,179,255,.10);
       }
-      .btn.primary:hover{ transform: translateY(-2px); box-shadow: 0 0 50px rgba(255,154,0,.32), 0 0 70px rgba(0,179,255,.22) }
+      .btn.primary:hover{
+        transform: translateY(-2px);
+        filter: saturate(1.05);
+      }
+
       .btn.secondary{
-        background: rgba(255,255,255,.06);
-        color: var(--text);
+        background:#fff;
+        color: var(--ink);
+        box-shadow: 0 12px 26px rgba(2,6,23,.06);
       }
-      .btn.secondary:hover{ transform: translateY(-2px); background: rgba(255,255,255,.10) }
+      .btn.secondary:hover{
+        transform: translateY(-2px);
+        background:#f6f6f7;
+      }
 
       .divider{
         height:1px;
-        background: rgba(255,255,255,.12);
+        background: var(--line);
         margin: 6px 0 0;
       }
 
       .mini{
         display:grid;
-        gap:10px;
+        gap:12px;
         grid-template-columns: repeat(3, minmax(0,1fr));
         margin-top:14px;
       }
 
       .miniCard{
-        border:1px solid rgba(255,255,255,.12);
-        background: rgba(255,255,255,.05);
+        border:1px solid var(--line2);
+        background:#ffffff;
         border-radius:18px;
-        padding:14px;
+        padding:16px;
         display:grid;
         gap:8px;
+        box-shadow: 0 14px 34px rgba(2,6,23,.06);
+        position:relative;
+        overflow:hidden;
+      }
+
+      .miniCard::before{
+        content:"";
+        position:absolute; inset:-2px;
+        background: radial-gradient(300px 140px at 20% 0%, rgba(255,45,85,.10), transparent 60%),
+                    radial-gradient(300px 140px at 80% 0%, rgba(0,179,255,.10), transparent 60%);
+        opacity:.75;
+        pointer-events:none;
       }
 
       .miniTitle{
-        font-weight:950;
-        letter-spacing:.2px;
+        font-weight:1000;
+        letter-spacing:-.01em;
+        position:relative;
       }
 
       .miniText{
         color: var(--muted);
         font-size: 13px;
-        line-height:1.45;
+        line-height:1.5;
+        font-weight:650;
+        position:relative;
       }
 
       footer{
         text-align:center;
-        color: rgba(245,247,255,.55);
+        color:#6b7280;
         font-size: 12px;
         margin-top: 10px;
+        font-weight:700;
       }
 
-      @media (max-width: 860px){
-        .mini{ grid-template-columns:1fr; }
+      @media (max-width: 960px){
+        .topRow{ grid-template-columns: 1fr; }
       }
+
       @media (max-width: 520px){
         header{ flex-direction:column; align-items:flex-start; }
         .actions .btn{ width:100%; }
-        .logo{ padding:12px; border-radius:14px; }
+        .logo{ padding:12px; border-radius:16px; }
       }
     </style>
   </head>
 
   <body>
-    <div class="fx" aria-hidden="true"></div>
+    <div class="aura" aria-hidden="true"></div>
 
     <main class="wrap">
       <div class="container">
         <header>
-          <div class="brand"><span class="brandDot"></span> I Shirt You Not — by Dawn</div>
+          <div class="brand" aria-label="Brand">
+            <span class="brandMark" aria-hidden="true"></span>
+            <div class="brandText">
+              <strong>I Shirt You Not</strong>
+              <span>by Dawn • Custom tees with attitude</span>
+            </div>
+          </div>
+
           <nav class="nav" aria-label="Primary">
             <a href="index.html">Home</a>
             <a href="products.html">Our Products</a>
@@ -277,26 +384,31 @@
 
         <section class="hero">
           <div class="heroInner">
-            <div class="logoWrap">
-              <!-- This is where your logo.png is used -->
-              <img class="logo" src="logo.png" alt="I Shirt You Not by Dawn logo" />
-            </div>
+            <div class="topRow">
+              <div class="logoWrap">
+                <img class="logo" src="logo.png" alt="I Shirt You Not by Dawn logo" />
+              </div>
 
-            <h1>Custom Tees With Attitude.</h1>
-            <p class="sub">
-              Clean designs, sharp prints, and a professional finish — without losing the personality.
-            </p>
+              <aside class="rightPanel" aria-label="Hero copy">
+                <div class="kicker"><span class="kickerDot"></span> Premium Custom Apparel</div>
+                <h1>Custom Tees With Attitude.</h1>
+                <p class="sub">
+                  Clean designs, sharp prints, and a professional finish — without losing the personality.
+                  Made for gifts, crews, events, brands, and “I need this on a shirt” moments.
+                </p>
 
-            <div class="chips" aria-label="Highlights">
-              <span class="chip">Custom Designs</span>
-              <span class="chip">Bulk Orders</span>
-              <span class="chip">Fast Turnaround</span>
-              <span class="chip">Quality Prints</span>
-            </div>
+                <div class="chips" aria-label="Highlights">
+                  <span class="chip">Custom Designs</span>
+                  <span class="chip">Bulk Orders</span>
+                  <span class="chip">Fast Turnaround</span>
+                  <span class="chip">Quality Prints</span>
+                </div>
 
-            <div class="actions">
-              <a class="btn primary" href="products.html">Browse Our Products</a>
-              <a class="btn secondary" href="contact.html">Request a Quote</a>
+                <div class="actions">
+                  <a class="btn primary" href="products.html">Browse Our Products</a>
+                  <a class="btn secondary" href="contact.html">Request a Quote</a>
+                </div>
+              </aside>
             </div>
 
             <div class="divider"></div>
@@ -308,11 +420,11 @@
               </div>
               <div class="miniCard">
                 <div class="miniTitle">Teams & Bulk</div>
-                <div class="miniText">School groups, work crews, family reunions — get consistent prints and pricing.</div>
+                <div class="miniText">School groups, work crews, family reunions — consistent prints and pricing.</div>
               </div>
               <div class="miniCard">
                 <div class="miniTitle">Design Help</div>
-                <div class="miniText">Send your idea and we’ll help tighten it up so it prints clean and looks legit.</div>
+                <div class="miniText">Send your idea — we’ll tighten it up so it prints clean and looks legit.</div>
               </div>
             </div>
           </div>
