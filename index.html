@@ -10,8 +10,6 @@
 
 <style>
   :root{
-    --bg0:#050506;
-    --bg1:#0b0b0e;
     --ink:#fff;
     --muted:rgba(255,255,255,.72);
     --line:rgba(255,255,255,.14);
@@ -21,11 +19,7 @@
     --gold:#ffb703;
 
     --max:1120px;
-    --r:18px;
     --shadow: 0 28px 90px rgba(0,0,0,.65);
-
-    --glass:rgba(255,255,255,.06);
-    --glass2:rgba(255,255,255,.04);
   }
 
   *{box-sizing:border-box}
@@ -58,7 +52,7 @@
 
   /* top bar */
   .topbar{
-    position:sticky; top:0; z-index:50;
+    position:sticky; top:0; z-index:1000;
     backdrop-filter: blur(14px);
     background: rgba(0,0,0,.46);
     border-bottom:1px solid var(--line);
@@ -91,7 +85,6 @@
     background:rgba(255,255,255,.08);
   }
 
-  /* page layout sections */
   main{padding:18px 0 0}
   .panel{
     border-radius: 22px;
@@ -101,45 +94,51 @@
     overflow:hidden;
   }
 
-  /* HERO IMAGE SECTION (big photo) */
+  /* ===== HERO (FIXED: real <img>, no background weirdness) ===== */
   .hero{
     position:relative;
-    height: 360px;
+    height: 520px;                 /* IMPORTANT: enough room so logo never clips */
     border-bottom:1px solid rgba(255,255,255,.10);
-    background: #111;
+    overflow:hidden;
+    background:#0b0b0e;
   }
-  .heroImg{
+  .heroPhoto{
+    position:absolute; inset:0;
+    width:100%; height:100%;
+    object-fit:cover;
+    object-position:center;
+    transform: translateZ(0) scale(1.02); /* avoids banding/fractional artifacts */
+    filter: saturate(1.02) contrast(1.04);
+  }
+  .heroShade{
     position:absolute; inset:0;
     background:
-      linear-gradient(180deg, rgba(0,0,0,.25), rgba(0,0,0,.65)),
-      url("hero.jpg") center/cover no-repeat;
-    filter: saturate(1.02) contrast(1.05);
+      radial-gradient(900px 520px at 20% 20%, rgba(255,45,85,.18), transparent 62%),
+      radial-gradient(820px 520px at 82% 30%, rgba(0,179,255,.14), transparent 62%),
+      linear-gradient(180deg, rgba(0,0,0,.20), rgba(0,0,0,.72));
+    pointer-events:none;
   }
-  /* fallback if hero.jpg not present */
-  .heroImg.fallback{
-    background:
-      radial-gradient(900px 420px at 40% 30%, rgba(255,255,255,.08), transparent 60%),
-      radial-gradient(680px 380px at 70% 55%, rgba(0,179,255,.18), transparent 62%),
-      radial-gradient(620px 360px at 25% 70%, rgba(255,45,85,.16), transparent 62%),
-      linear-gradient(180deg, #141418, #08080a);
-  }
-
-  /* centered logo hovering in the hero like your screenshot */
   .heroLogoWrap{
     position:absolute;
-    left:50%; top:50%;
-    transform: translate(-50%,-58%);
-    width: min(420px, 70%);
+    left:50%;
+    top: 56%;
+    transform: translate(-50%,-50%);
+    width: min(520px, 78%);
+    display:flex; justify-content:center;
     filter: drop-shadow(0 18px 26px rgba(0,0,0,.65));
+    pointer-events:none;
   }
-
-  /* CTA button in hero */
+  .heroLogo{
+    width:100%;
+    height:auto;
+  }
   .heroCta{
     position:absolute;
-    left:50%; bottom:18px;
+    left:50%; bottom:22px;
     transform: translateX(-50%);
-    width: min(360px, 88%);
+    width: min(360px, 86%);
     display:flex; justify-content:center;
+    z-index:2;
   }
   .btnGold{
     display:inline-flex; align-items:center; justify-content:center;
@@ -203,7 +202,7 @@
   }
   .btn:hover{filter:brightness(1.04)}
 
-  /* MID SECTION with right image like screenshot */
+  /* MID SECTION */
   .mid{
     display:grid;
     grid-template-columns: 1.15fr .85fr;
@@ -229,16 +228,22 @@
     border-radius: 16px;
     border:1px solid rgba(255,255,255,.14);
     overflow:hidden;
-    background:
-      linear-gradient(180deg, rgba(0,0,0,.15), rgba(0,0,0,.55)),
-      url("rack.jpg") center/cover no-repeat;
     min-height: 180px;
+    position:relative;
+    background:#0b0b0e;
   }
-  .midImg.fallback{
-    background:
-      radial-gradient(220px 140px at 30% 30%, rgba(0,179,255,.22), transparent 62%),
-      radial-gradient(220px 140px at 70% 55%, rgba(255,45,85,.18), transparent 62%),
-      linear-gradient(135deg, rgba(255,255,255,.08), rgba(255,255,255,.02));
+  .midImg img{
+    width:100%; height:100%;
+    object-fit:cover;
+    object-position:center;
+    filter: saturate(1.02) contrast(1.03);
+    transform: scale(1.02);
+  }
+  .midImg::after{
+    content:"";
+    position:absolute; inset:0;
+    background: linear-gradient(180deg, rgba(0,0,0,.15), rgba(0,0,0,.55));
+    pointer-events:none;
   }
 
   /* QUOTE + TESTIMONIAL SECTION */
@@ -255,7 +260,6 @@
     text-transform:uppercase;
     font-weight:1000;
   }
-
   .quoteGrid{
     margin-top:16px;
     display:grid;
@@ -291,16 +295,22 @@
     border-radius: 18px;
     border:1px solid rgba(255,255,255,.14);
     overflow:hidden;
-    background:
-      linear-gradient(180deg, rgba(0,0,0,.10), rgba(0,0,0,.58)),
-      url("testimonial.jpg") center/cover no-repeat;
     min-height: 260px;
+    position:relative;
+    background:#0b0b0e;
   }
-  .testImg.fallback{
-    background:
-      radial-gradient(260px 160px at 30% 30%, rgba(255,255,255,.08), transparent 62%),
-      radial-gradient(220px 140px at 70% 55%, rgba(0,179,255,.18), transparent 62%),
-      linear-gradient(135deg, rgba(255,45,85,.12), rgba(255,255,255,.03));
+  .testImg img{
+    width:100%; height:100%;
+    object-fit:cover;
+    object-position:center;
+    transform: scale(1.02);
+    filter: saturate(1.02) contrast(1.03);
+  }
+  .testImg::after{
+    content:"";
+    position:absolute; inset:0;
+    background: linear-gradient(180deg, rgba(0,0,0,.10), rgba(0,0,0,.58));
+    pointer-events:none;
   }
 
   /* FOOTER + FORM STRIP */
@@ -345,7 +355,12 @@
     .mid{grid-template-columns:1fr}
     .quoteGrid{grid-template-columns:1fr}
     .bottom{grid-template-columns:1fr}
-    .hero{height: 320px}
+    .hero{height: 460px}
+    .heroLogoWrap{width:min(460px, 86%); top:58%}
+  }
+  @media (max-width: 520px){
+    .hero{height: 420px}
+    .heroLogoWrap{width:92%; top:60%}
   }
 </style>
 </head>
@@ -365,7 +380,7 @@
         </div>
 
         <nav class="nav" aria-label="Primary">
-          <a class="active" href="#">Home</a>
+          <a class="active" href="index.html">Home</a>
           <a href="products.html">Products</a>
           <a href="contact.html">Contact</a>
         </nav>
@@ -376,13 +391,13 @@
   <main class="container">
     <section class="panel">
 
-      <!-- HERO IMAGE -->
+      <!-- HERO IMAGE (FIXED) -->
       <div class="hero">
-        <!-- If you don't have hero.jpg yet, add class "fallback" below -->
-        <div class="heroImg" id="heroImg"></div>
+        <img class="heroPhoto" src="hero.jpg" alt="I Shirt You Not shop scene" />
+        <div class="heroShade" aria-hidden="true"></div>
 
         <div class="heroLogoWrap">
-          <img src="logo.png" alt="I Shirt You Not logo" />
+          <img class="heroLogo" src="logo.png" alt="I Shirt You Not logo" />
         </div>
 
         <div class="heroCta">
@@ -415,8 +430,9 @@
           </div>
         </div>
 
-        <!-- If you don't have rack.jpg yet, add class "fallback" below -->
-        <div class="midImg" id="rackImg" aria-label="Clothing rack image"></div>
+        <div class="midImg" aria-label="Clothing rack image">
+          <img src="rack.jpg" alt="Clothing rack" />
+        </div>
       </div>
 
       <!-- QUOTE + TESTIMONIAL -->
@@ -433,8 +449,9 @@
             <div class="who">Dave M.</div>
           </div>
 
-          <!-- If you don't have testimonial.jpg yet, add class "fallback" below -->
-          <div class="testImg" id="testImg" aria-label="Testimonial photo"></div>
+          <div class="testImg" aria-label="Testimonial photo">
+            <img src="testimonial.jpg" alt="Happy customer" />
+          </div>
         </div>
       </div>
 
@@ -472,27 +489,6 @@
 
 <script>
   document.getElementById("year").textContent = new Date().getFullYear();
-
-  // If images are missing, auto-switch those blocks to "fallback" visuals (no broken look)
-  function imgExists(url){
-    return new Promise((resolve)=>{
-      const img = new Image();
-      img.onload = ()=>resolve(true);
-      img.onerror = ()=>resolve(false);
-      img.src = url + "?v=" + Date.now();
-    });
-  }
-
-  (async ()=>{
-    const heroOk = await imgExists("hero.jpg");
-    if(!heroOk) document.getElementById("heroImg").classList.add("fallback");
-
-    const rackOk = await imgExists("rack.jpg");
-    if(!rackOk) document.getElementById("rackImg").classList.add("fallback");
-
-    const testOk = await imgExists("testimonial.jpg");
-    if(!testOk) document.getElementById("testImg").classList.add("fallback");
-  })();
 
   function demoSubmit(e){
     e.preventDefault();
