@@ -1,125 +1,314 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>I Shirt You Not — Custom Tee’s With Attitude</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>I Shirt You Not — Custom Tee’s With Attitude</title>
+<meta name="description" content="Custom tees and hoodies with attitude. Bold prints. Fast turnaround. Real quality." />
+<meta name="robots" content="index,follow,max-image-preview:large" />
+<link rel="icon" href="logo.png" />
 
-  <meta name="description" content="Custom tees and hoodies with attitude. Bold prints. Fast turnaround. Real quality." />
-  <meta name="robots" content="index,follow,max-image-preview:large" />
+<style>
+:root{
+  --ink:#fff;
+  --muted:rgba(255,255,255,.72);
+  --line:rgba(255,255,255,.14);
 
-  <link rel="icon" href="logo.png" />
-  <link rel="stylesheet" href="styles.css" />
+  --hot:#ff2d55;
+  --ice:#00b3ff;
+  --gold:#ffb703;
+
+  --max:1120px;
+  --shadow: 0 28px 90px rgba(0,0,0,.65);
+
+  --radius: 22px;
+  --cardRadius: 18px;
+  --pad: 22px;
+  --gap: 18px;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+
+body{
+  margin:0;
+  font-family: system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  color:var(--ink);
+  background:
+    radial-gradient(900px 520px at 18% 20%, rgba(255,45,85,.16), transparent 62%),
+    radial-gradient(820px 520px at 82% 30%, rgba(0,179,255,.14), transparent 62%),
+    radial-gradient(520px 380px at 64% 78%, rgba(255,183,3,.10), transparent 66%),
+    linear-gradient(180deg, #030304 0%, #0b0b0e 55%, #030304 100%);
+  overflow-x:hidden;
+}
+
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+
+.container{max-width:var(--max); margin:0 auto; padding:0 18px}
+
+/* grain */
+.grain{
+  position:fixed; inset:-40%;
+  pointer-events:none; z-index:-1;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)' opacity='.12'/%3E%3C/svg%3E");
+  transform: rotate(8deg);
+  mix-blend-mode: overlay;
+  opacity:.85;
+}
+
+/* top bar */
+.topbar{
+  position:sticky; top:0; z-index:1000;
+  backdrop-filter: blur(14px);
+  background: rgba(0,0,0,.46);
+  border-bottom:1px solid var(--line);
+}
+.topbarRow{
+  display:flex; align-items:center; justify-content:space-between;
+  gap:14px; padding:12px 0;
+}
+.email{
+  display:flex; align-items:center; gap:10px;
+  font-size:14px; color:var(--muted); white-space:nowrap;
+}
+.email svg{opacity:.9}
+.nav{
+  display:flex; align-items:center; gap:18px;
+  font-size:14px; font-weight:900; letter-spacing:.2px;
+}
+.nav a{
+  padding:8px 12px;
+  border-radius:999px;
+  border:1px solid transparent;
+  opacity:.95;
+}
+.nav a:hover{
+  border-color:rgba(255,255,255,.16);
+  background:rgba(255,255,255,.06);
+}
+.nav a.active{
+  border-color:rgba(255,255,255,.22);
+  background:rgba(255,255,255,.08);
+}
+
+/* panel */
+main{padding:22px 0 28px}
+.panel{
+  border-radius: var(--radius);
+  border:1px solid rgba(255,255,255,.14);
+  background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.02));
+  box-shadow: var(--shadow);
+  overflow:hidden;
+}
+
+/* HERO */
+.hero{
+  position:relative;
+  height: 560px;
+  border-bottom:1px solid rgba(255,255,255,.10);
+  overflow:hidden;
+  background:#0b0b0e;
+}
+.heroPhoto{
+  position:absolute; inset:0;
+  width:100%; height:100%;
+  object-fit:cover;
+  object-position:center;
+  transform: translateZ(0) scale(1.02);
+  filter: saturate(1.02) contrast(1.04);
+}
+.heroShade{
+  position:absolute; inset:0;
+  background:
+    radial-gradient(900px 520px at 20% 20%, rgba(255,45,85,.18), transparent 62%),
+    radial-gradient(820px 520px at 82% 30%, rgba(0,179,255,.14), transparent 62%),
+    radial-gradient(520px 380px at 64% 78%, rgba(255,183,3,.10), transparent 66%),
+    linear-gradient(180deg, rgba(0,0,0,.18), rgba(0,0,0,.78));
+  pointer-events:none;
+}
+
+.heroInner{
+  position:absolute; inset:0;
+  display:grid;
+  place-items:center;
+  padding: 28px 18px;
+}
+
+.heroCard{
+  width: min(860px, 100%);
+  border-radius: 24px;
+  border:1px solid rgba(255,255,255,.14);
+  background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+  box-shadow: 0 30px 90px rgba(0,0,0,.55);
+  padding: clamp(18px, 3vw, 28px);
+  backdrop-filter: blur(10px);
+  text-align:center;
+}
+
+.heroLogoWrap{
+  width: min(440px, 78%);
+  margin: 0 auto 14px;
+  filter: drop-shadow(0 18px 26px rgba(0,0,0,.65));
+}
+.heroLogo{width:100%; height:auto;}
+
+.heroKicker{
+  margin: 0 auto;
+  max-width: 78ch;
+  color: rgba(255,255,255,.82);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.heroButtons{
+  margin-top: 16px;
+  display:flex;
+  justify-content:center;
+  gap:12px;
+  flex-wrap:wrap;
+}
+
+.btnGold{
+  display:inline-flex; align-items:center; justify-content:center;
+  padding: 14px 18px;
+  border-radius: 12px;
+  border:1px solid rgba(255,183,3,.55);
+  background: linear-gradient(90deg, rgba(255,183,3,.96), rgba(255,45,85,.75));
+  color:#130a00;
+  font-weight:1000;
+  letter-spacing:.7px;
+  text-transform:uppercase;
+  box-shadow: 0 18px 40px rgba(0,0,0,.45);
+  cursor:pointer;
+  min-width: 220px;
+}
+.btnGold:hover{filter:brightness(1.04)}
+
+.btn{
+  display:inline-flex; align-items:center; justify-content:center;
+  padding: 14px 18px;
+  border-radius: 12px;
+  border:1px solid rgba(255,255,255,.16);
+  background: rgba(255,255,255,.06);
+  font-weight:950;
+  letter-spacing:.6px;
+  text-transform:uppercase;
+  min-width: 220px;
+}
+.btn.primary{
+  border:none;
+  color:#0b0b0e;
+  background: linear-gradient(90deg, rgba(255,45,85,.92), rgba(0,179,255,.76));
+}
+.btn:hover{filter:brightness(1.04)}
+
+/* HEADLINE */
+.headline{
+  padding: 28px 22px 22px;
+  text-align:center;
+  background: rgba(0,0,0,.18);
+  border-top:1px solid rgba(255,255,255,.08);
+}
+.headline h1{
+  margin:0;
+  font-size: clamp(28px, 4vw, 44px);
+  letter-spacing:.8px;
+  text-transform:uppercase;
+  font-weight:1000;
+  line-height: 1.05;
+}
+.headline h1 .accent{color:var(--hot)}
+.headline p{
+  margin:12px auto 0;
+  max-width: 76ch;
+  color: var(--muted);
+  line-height:1.6;
+  font-size: 14px;
+}
+.accent{color:var(--hot)}
+
+footer{
+  padding: 16px 22px 18px;
+  border-top:1px solid rgba(255,255,255,.10);
+  background: rgba(0,0,0,.22);
+  display:flex;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:10px;
+}
+.legal{
+  color: rgba(255,255,255,.70);
+  font-size:12px;
+}
+</style>
 </head>
 
 <body>
-  <div class="grain" aria-hidden="true"></div>
 
-  <div class="topbar">
-    <div class="container">
-      <div class="topbarRow">
-        <div class="email">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M4 6h16v12H4V6Z" stroke="currentColor" stroke-width="2"/>
-            <path d="m4 7 8 6 8-6" stroke="currentColor" stroke-width="2"/>
-          </svg>
-          <a href="mailto:ishirtyounotbydawn@gmail.com">ishirtyounotbydawn@gmail.com</a>
-        </div>
+<div class="grain"></div>
 
-        <nav class="nav" aria-label="Primary">
-          <a class="active" href="index.html">Home</a>
-          <a href="products.html">Products</a>
-          <a href="contact.html">Contact</a>
-        </nav>
+<div class="topbar">
+  <div class="container">
+    <div class="topbarRow">
+      <div class="email">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+          <path d="M4 6h16v12H4V6Z" stroke="currentColor" stroke-width="2"/>
+          <path d="m4 7 8 6 8-6" stroke="currentColor" stroke-width="2"/>
+        </svg>
+        <a href="mailto:ishirtyounotbydawn@gmail.com">ishirtyounotbydawn@gmail.com</a>
+      </div>
+
+      <nav class="nav">
+        <a class="active" href="index.html">Home</a>
+        <a href="products.html">Products</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </div>
+</div>
+
+<main class="container">
+<section class="panel">
+
+<div class="hero">
+  <img class="heroPhoto" src="hero.jpg" alt="">
+  <div class="heroShade"></div>
+
+  <div class="heroInner">
+    <div class="heroCard">
+      <div class="heroLogoWrap">
+        <img class="heroLogo" src="logo.png" alt="">
+      </div>
+
+      <p class="heroKicker">
+        Bold prints. Clean edges. Fast turnaround. You bring the idea — we make it look expensive on purpose.
+      </p>
+
+      <div class="heroButtons">
+        <a class="btnGold" href="contact.html">GET A QUOTE</a>
+        <a class="btn primary" href="products.html">SHOP PRODUCTS</a>
       </div>
     </div>
   </div>
+</div>
 
-  <main class="container">
-    <section class="panel">
+<div class="headline">
+  <h1>CUSTOM TEES AND HOODIES<br><span class="accent">WITH ATTITUDE!</span></h1>
+  <p>Loud designs. Clean prints. Real quality. Tell us what you want and we’ll make it look dope af.</p>
+</div>
 
-      <!-- HERO -->
-      <div class="hero">
-        <!-- Optional hero background image (use hero.jpg if you want it) -->
-        <img class="heroPhoto" src="hero.jpg" alt="Streetwear hero background" />
+<footer>
+  <div class="legal">© <span id="year"></span> I Shirt You Not. All rights reserved.</div>
+  <div class="legal">Email: <b>ishirtyounotbydawn@gmail.com</b></div>
+</footer>
 
-        <div class="heroShade" aria-hidden="true"></div>
+</section>
+</main>
 
-        <div class="heroInner">
-          <div class="heroCard">
-            <div class="heroLogoWrap">
-              <img class="heroLogo" src="logo.png" alt="I Shirt You Not logo" />
-            </div>
+<script>
+document.getElementById("year").textContent = new Date().getFullYear();
+</script>
 
-            <p class="heroKicker">
-              Bold prints. Clean edges. Fast turnaround. You bring the idea — we make it look expensive on purpose.
-            </p>
-
-            <div class="heroButtons">
-              <a class="btnGold" href="contact.html">GET A QUOTE</a>
-              <a class="btn primary" href="products.html">SHOP PRODUCTS</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- HEADLINE -->
-      <div class="headline">
-        <h1>CUSTOM TEES AND HOODIES<br><span class="accent">WITH ATTITUDE!</span></h1>
-        <p>
-          Loud designs. Clean prints. Real quality. Tell us what you want and we’ll make it look dope af.
-        </p>
-      </div>
-
-      <!-- TRUST STRIP -->
-      <div class="trust">
-        <div class="trustGrid">
-          <div class="trustCard">
-            <p class="trustTitle"><span class="dot"></span> Fast Quotes</p>
-            <p>Send qty, sizes, colors, and deadline. We’ll reply straight with pricing + timeline.</p>
-          </div>
-          <div class="trustCard">
-            <p class="trustTitle"><span class="dot"></span> Clean Printing</p>
-            <p>Sharp edges, solid ink, and alignment checks — so your shirts look premium.</p>
-          </div>
-          <div class="trustCard">
-            <p class="trustTitle"><span class="dot"></span> Streetwear Fit</p>
-            <p>Tees, hoodies, crewnecks — printed to match your vibe, not mass-produced boring.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- MID SECTION -->
-      <div class="mid">
-        <div class="midCopy">
-          <h2>Your attitude. Your style. Your tee.</h2>
-          <p>
-            Welcome to the most exclusive custom T-shirt shop on the web. We specialize in custom tees and hoodies
-            that match your personality. Bold, unique, and printed clean so you stand out in any crowd.
-          </p>
-
-          <div class="midCtas">
-            <a class="btn primary" href="products.html">SHOP NOW</a>
-            <a class="btn" href="contact.html">GET A QUOTE</a>
-          </div>
-        </div>
-
-        <div class="midImg" aria-label="Clothing rack image">
-          <img src="rack.jpg" alt="Clothing rack" />
-        </div>
-      </div>
-
-      <!-- FOOTER -->
-      <footer>
-        <div class="legal">© <span id="year"></span> I Shirt You Not. All rights reserved.</div>
-        <div class="legal">Email: <a href="mailto:ishirtyounotbydawn@gmail.com"><b>ishirtyounotbydawn@gmail.com</b></a></div>
-      </footer>
-
-    </section>
-  </main>
-
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
 </body>
 </html>
