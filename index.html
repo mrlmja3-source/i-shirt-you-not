@@ -40,6 +40,7 @@
 
   .container{max-width:var(--max); margin:0 auto; padding:0 18px}
 
+  /* gritty grain */
   .grain{
     position:fixed; inset:-40%;
     pointer-events:none; z-index:-1;
@@ -49,6 +50,7 @@
     opacity:.85;
   }
 
+  /* top bar */
   .topbar{
     position:sticky; top:0; z-index:1000;
     backdrop-filter: blur(14px);
@@ -83,6 +85,7 @@
     background:rgba(255,255,255,.08);
   }
 
+  /* panel */
   main{padding:18px 0 0}
   .panel{
     border-radius: 22px;
@@ -92,6 +95,7 @@
     overflow:hidden;
   }
 
+  /* HERO */
   .hero{
     position:relative;
     height: 520px;
@@ -150,6 +154,7 @@
   }
   .btnGold:hover{filter:brightness(1.04)}
 
+  /* HEADLINE */
   .headline{
     padding: 26px 22px 18px;
     text-align:center;
@@ -195,6 +200,7 @@
   }
   .btn:hover{filter:brightness(1.04)}
 
+  /* MID */
   .mid{
     display:grid;
     grid-template-columns: 1.15fr .85fr;
@@ -238,45 +244,23 @@
     pointer-events:none;
   }
 
-  .bottom{
-    display:grid;
-    grid-template-columns: 1.1fr .9fr;
-    gap:18px;
-    align-items:end;
-    padding: 18px 22px 22px;
+  /* SIMPLE FOOTER */
+  footer{
+    padding: 16px 22px 18px;
     border-top:1px solid rgba(255,255,255,.10);
     background: rgba(0,0,0,.22);
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:10px;
   }
-  .legalLine{
+  .legal{
     color: rgba(255,255,255,.70);
     font-size:12px;
-  }
-  .form{
-    border-radius: 18px;
-    border:1px solid rgba(255,255,255,.14);
-    background: rgba(0,0,0,.22);
-    padding: 14px;
-  }
-  .row{display:grid; grid-template-columns:1fr; gap:10px}
-  label{font-size:12px; color:rgba(255,255,255,.82)}
-  input,textarea{
-    width:100%;
-    border-radius: 12px;
-    border:1px solid rgba(255,255,255,.14);
-    background: rgba(0,0,0,.30);
-    color: var(--ink);
-    padding: 12px;
-    outline:none;
-  }
-  textarea{min-height: 110px; resize:vertical}
-  input:focus,textarea:focus{
-    border-color: rgba(0,179,255,.45);
-    box-shadow: 0 0 0 3px rgba(0,179,255,.12);
   }
 
   @media (max-width: 980px){
     .mid{grid-template-columns:1fr}
-    .bottom{grid-template-columns:1fr}
     .hero{height: 460px}
     .heroLogoWrap{width:min(460px, 86%); top:58%}
   }
@@ -313,6 +297,7 @@
   <main class="container">
     <section class="panel">
 
+      <!-- HERO IMAGE (landing only) -->
       <div class="hero">
         <img class="heroPhoto" src="hero.jpg" alt="I Shirt You Not shop scene" />
         <div class="heroShade" aria-hidden="true"></div>
@@ -326,6 +311,7 @@
         </div>
       </div>
 
+      <!-- HEADLINE -->
       <div class="headline">
         <h1>CUSTOM TEES AND HOODIES<br><span class="accent">WITH ATTITUDE!</span></h1>
         <p>
@@ -337,6 +323,7 @@
         </div>
       </div>
 
+      <!-- MID SECTION -->
       <div class="mid">
         <div class="midCopy">
           <h2>Your attitude. Your style. Your tee.</h2>
@@ -354,46 +341,17 @@
         </div>
       </div>
 
-      <div class="bottom">
-        <div>
-          <div class="legalLine">© <span id="year"></span> I Shirt You Not. All rights reserved.</div>
-        </div>
-
-        <form class="form" onsubmit="return demoSubmit(event)">
-          <div class="row">
-            <div>
-              <label for="name">Name</label>
-              <input id="name" name="name" placeholder="Name" required />
-            </div>
-
-            <div>
-              <label for="email">Email</label>
-              <input id="email" name="email" type="email" placeholder="Email" required />
-            </div>
-
-            <div>
-              <label for="details">Order details</label>
-              <textarea id="details" name="details" placeholder="Qty, sizes, colors, deadline, and what you want printed…"></textarea>
-            </div>
-
-            <button class="btn primary" type="submit">SEND</button>
-            <div class="qsub" id="note" style="margin:0"></div>
-          </div>
-        </form>
-      </div>
+      <!-- FOOTER (no contact section on landing) -->
+      <footer>
+        <div class="legal">© <span id="year"></span> I Shirt You Not. All rights reserved.</div>
+        <div class="legal">Email: <a href="mailto:ishirtyounot@gmail.com"><b>ishirtyounot@gmail.com</b></a></div>
+      </footer>
 
     </section>
   </main>
 
 <script>
   document.getElementById("year").textContent = new Date().getFullYear();
-
-  function demoSubmit(e){
-    e.preventDefault();
-    document.getElementById("note").textContent =
-      "Demo form (no backend yet). Email ishirtyounot@gmail.com to place an order.";
-    return false;
-  }
 </script>
 </body>
 </html>
