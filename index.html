@@ -1,613 +1,250 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>I Shirt You Not — Custom Tee’s With Attitude</title>
-  <meta name="description" content="Custom tees and hoodies with attitude. Bold prints, fast turnaround, and pro-quality results." />
-  <meta name="robots" content="index,follow,max-image-preview:large" />
-  <link rel="canonical" href="https://example.com/" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Open Graph -->
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="I Shirt You Not — Custom Tee’s With Attitude" />
-  <meta property="og:description" content="Custom tees and hoodies with attitude. Bold prints, fast turnaround, and pro-quality results." />
-  <meta property="og:url" content="https://example.com/" />
-  <meta property="og:image" content="https://example.com/assets/og.jpg" />
-  <meta name="twitter:card" content="summary_large_image" />
+<title>I Shirt You Not – Custom Tees With Attitude</title>
+<meta name="description" content="Custom tees and hoodies with attitude. Bold prints. Fast turnaround. Real quality.">
 
-  <!-- Favicons (add your own files if you want) -->
-  <link rel="icon" href="assets/favicon.ico" />
-  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+<link rel="icon" href="logo.png">
 
-  <!-- Preload logo -->
-  <link rel="preload" as="image" href="assets/logo.png" />
+<style>
+:root{
+  --bg:#050506;
+  --ink:#fff;
+  --muted:#aaa;
+  --hot:#ff2d55;
+  --ice:#00b3ff;
+}
 
-  <style>
-    :root{
-      --bg:#050506;
-      --ink:#ffffff;
-      --muted:rgba(255,255,255,.72);
-      --line:rgba(255,255,255,.14);
-      --glass:rgba(10,10,12,.52);
-      --shadow: 0 24px 70px rgba(0,0,0,.55);
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family: system-ui, Arial, sans-serif;
+  background: radial-gradient(circle at 20% 20%, rgba(255,45,85,.25), transparent 50%),
+              radial-gradient(circle at 80% 30%, rgba(0,179,255,.25), transparent 55%),
+              #050506;
+  color:var(--ink);
+}
 
-      --hot:#ff2d55;
-      --ice:#00b3ff;
-      --gold:#ffb703;
-      --acid:#b6ff00;
+a{color:inherit;text-decoration:none}
 
-      --max: 1120px;
-      --r: 18px;
-    }
+.container{max-width:1100px;margin:auto;padding:0 20px}
 
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      color:var(--ink);
-      background: var(--bg);
-      overflow-x:hidden;
-    }
-    a{color:inherit;text-decoration:none}
-    button{font:inherit}
+/* TOP BAR */
+.topbar{
+  background:rgba(0,0,0,.5);
+  border-bottom:1px solid rgba(255,255,255,.12);
+  backdrop-filter:blur(12px);
+}
+.topbar-inner{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:12px 0;
+}
+.topbar-left{font-size:14px;color:var(--muted)}
+.nav a{
+  margin-left:18px;
+  font-weight:700;
+}
 
-    /* --- Background paint splashes (CSS-only, no images) --- */
-    .bg{
-      position:fixed; inset:0;
-      z-index:-2;
-      background:
-        radial-gradient(800px 420px at 18% 22%, rgba(255,45,85,.22), transparent 60%),
-        radial-gradient(720px 420px at 82% 30%, rgba(0,179,255,.18), transparent 58%),
-        radial-gradient(540px 380px at 70% 78%, rgba(255,183,3,.14), transparent 62%),
-        radial-gradient(520px 360px at 25% 82%, rgba(182,255,0,.10), transparent 62%),
-        radial-gradient(1200px 900px at 50% 40%, rgba(255,255,255,.06), transparent 55%),
-        linear-gradient(180deg, #020203 0%, #060609 55%, #020203 100%);
-    }
-    .grain{
-      position:fixed; inset:-40%;
-      z-index:-1;
-      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.18'/%3E%3C/svg%3E");
-      transform:rotate(8deg);
-      pointer-events:none;
-      mix-blend-mode:overlay;
-    }
+/* HERO */
+.hero{
+  padding:60px 0 40px;
+}
+.hero-card{
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.14);
+  border-radius:22px;
+  padding:40px;
+  box-shadow:0 40px 80px rgba(0,0,0,.6);
+}
+.logo{
+  max-width:420px;
+  width:100%;
+  display:block;
+  margin-bottom:20px;
+}
+.hero h1{
+  font-size:42px;
+  line-height:1.05;
+  margin:10px 0;
+}
+.hero p{
+  color:var(--muted);
+  max-width:600px;
+  line-height:1.6;
+}
+.cta{
+  margin-top:20px;
+}
+.btn{
+  display:inline-block;
+  padding:12px 18px;
+  border-radius:14px;
+  border:1px solid rgba(255,255,255,.18);
+  margin-right:10px;
+  font-weight:900;
+}
+.btn.primary{
+  background:linear-gradient(90deg,var(--hot),var(--ice));
+  border:none;
+}
 
-    /* --- Layout --- */
-    .wrap{min-height:100%; display:flex; flex-direction:column}
-    .container{width:100%; max-width:var(--max); margin:0 auto; padding:0 18px}
+/* PRODUCTS */
+section{padding:50px 0}
+h2{margin-bottom:10px}
+.cards{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:20px;
+}
+.card{
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.14);
+  border-radius:18px;
+  padding:18px;
+}
+.card h3{margin-top:0}
 
-    /* --- Top bar --- */
-    .topbar{
-      position:sticky; top:0; z-index:50;
-      backdrop-filter: blur(14px);
-      background: rgba(0,0,0,.42);
-      border-bottom: 1px solid var(--line);
-    }
-    .topbar-inner{
-      display:grid;
-      grid-template-columns: 1fr auto 1fr;
-      align-items:center;
-      gap:12px;
-      padding: 12px 0;
-    }
-    .email{
-      display:flex; align-items:center; gap:10px;
-      color:var(--muted);
-      font-size:14px;
-      white-space:nowrap;
-    }
-    .email svg{opacity:.9}
-    .nav{
-      display:flex; justify-content:center; align-items:center; gap:18px;
-    }
-    .nav a{
-      font-weight:700;
-      letter-spacing:.3px;
-      font-size:14px;
-      opacity:.92;
-      padding:8px 10px;
-      border-radius:999px;
-      border:1px solid transparent;
-    }
-    .nav a:hover{
-      border-color:rgba(255,255,255,.16);
-      background:rgba(255,255,255,.06);
-    }
-    .social{
-      display:flex; justify-content:flex-end; gap:10px;
-    }
-    .iconbtn{
-      width:34px; height:34px;
-      display:grid; place-items:center;
-      border-radius:12px;
-      border:1px solid rgba(255,255,255,.14);
-      background:rgba(255,255,255,.06);
-    }
-    .iconbtn:hover{background:rgba(255,255,255,.10)}
+/* CONTACT */
+.contact{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
+}
+input,textarea{
+  width:100%;
+  padding:12px;
+  border-radius:12px;
+  border:1px solid rgba(255,255,255,.18);
+  background:#000;
+  color:white;
+}
+textarea{min-height:120px}
 
-    /* --- Hero --- */
-    header.hero{
-      padding: 42px 0 22px;
-    }
-    .hero-card{
-      border-radius: calc(var(--r) + 10px);
-      border:1px solid rgba(255,255,255,.14);
-      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
-      box-shadow: var(--shadow);
-      overflow:hidden;
-      position:relative;
-    }
-    .hero-card:before{
-      content:"";
-      position:absolute; inset:-120px -120px auto auto;
-      width:340px; height:340px;
-      background: radial-gradient(circle at 30% 30%, rgba(255,45,85,.25), transparent 60%),
-                  radial-gradient(circle at 70% 70%, rgba(0,179,255,.18), transparent 58%);
-      filter: blur(10px);
-      opacity:.9;
-      pointer-events:none;
-    }
-    .hero-inner{
-      display:grid;
-      grid-template-columns: 1.15fr .85fr;
-      gap:22px;
-      padding: 28px;
-      align-items:center;
-    }
-    @media (max-width: 920px){
-      .hero-inner{grid-template-columns:1fr; padding:22px}
-      .social{display:none}
-      .topbar-inner{grid-template-columns:1fr auto; }
-      .topbar-inner .nav{justify-content:flex-end}
-    }
+/* FOOTER */
+footer{
+  border-top:1px solid rgba(255,255,255,.12);
+  background:rgba(0,0,0,.6);
+  padding:20px 0;
+}
+.footer-inner{
+  display:flex;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:10px;
+}
+.legal a{margin-right:12px;font-size:13px;color:var(--muted)}
 
-    .brand{
-      display:flex;
-      flex-direction:column;
-      gap:14px;
-    }
-    .logo-row{
-      margin-top: 18px; /* pushes logo down like you asked */
-      display:flex;
-      align-items:flex-end;
-      gap:14px;
-    }
-    .logo{
-      width:min(420px, 100%);
-      height:auto;
-      display:block;
-      filter: drop-shadow(0 18px 26px rgba(0,0,0,.65));
-    }
-    .headline{
-      font-size: clamp(30px, 3.2vw, 44px);
-      line-height:1.06;
-      margin: 8px 0 0;
-      letter-spacing:.2px;
-    }
-    .sub{
-      color:var(--muted);
-      font-size:16px;
-      line-height:1.55;
-      max-width: 58ch;
-      margin: 0;
-    }
-
-    .cta{
-      display:flex;
-      gap:12px;
-      flex-wrap:wrap;
-      margin-top: 8px;
-    }
-    .btn{
-      border:1px solid rgba(255,255,255,.18);
-      background: rgba(255,255,255,.06);
-      color:var(--ink);
-      padding: 12px 16px;
-      border-radius: 14px;
-      font-weight:900;
-      letter-spacing:.25px;
-      cursor:pointer;
-      transition: transform .12s ease, background .12s ease, border-color .12s ease;
-      display:inline-flex; align-items:center; gap:10px;
-    }
-    .btn:hover{ transform: translateY(-1px); background: rgba(255,255,255,.10); border-color: rgba(255,255,255,.26); }
-    .btn.primary{
-      border-color: rgba(255,45,85,.55);
-      background: linear-gradient(90deg, rgba(255,45,85,.95), rgba(0,179,255,.70));
-      box-shadow: 0 18px 30px rgba(255,45,85,.12);
-    }
-    .btn.primary:hover{ filter: brightness(1.04); }
-
-    .hero-side{
-      border-radius: var(--r);
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(0,0,0,.22);
-      padding: 16px;
-    }
-    .mini-grid{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap:12px;
-    }
-    .mini{
-      border-radius: 16px;
-      border:1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.06);
-      padding: 14px;
-      min-height: 92px;
-    }
-    .mini b{display:block; font-size:14px; letter-spacing:.2px}
-    .mini span{display:block; color:var(--muted); font-size:13px; margin-top:6px; line-height:1.35}
-
-    /* --- Sections --- */
-    section{padding: 34px 0}
-    .section-title{
-      display:flex; align-items:flex-end; justify-content:space-between; gap:16px;
-      margin-bottom: 16px;
-    }
-    h2{
-      margin:0;
-      font-size: 22px;
-      letter-spacing:.2px;
-    }
-    .hint{color:var(--muted); font-size:14px}
-
-    .cards{
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap:14px;
-    }
-    @media (max-width: 920px){
-      .cards{grid-template-columns:1fr}
-    }
-    .card{
-      border-radius: 20px;
-      border:1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.05);
-      box-shadow: 0 18px 60px rgba(0,0,0,.35);
-      overflow:hidden;
-    }
-    .thumb{
-      height: 160px;
-      background:
-        radial-gradient(220px 140px at 20% 30%, rgba(255,45,85,.35), transparent 60%),
-        radial-gradient(260px 160px at 70% 50%, rgba(0,179,255,.25), transparent 60%),
-        linear-gradient(135deg, rgba(255,255,255,.08), rgba(255,255,255,.02));
-      border-bottom:1px solid rgba(255,255,255,.12);
-      position:relative;
-    }
-    .thumb:after{
-      content:"";
-      position:absolute; inset:0;
-      background: radial-gradient(circle at 20% 20%, rgba(255,255,255,.10), transparent 45%);
-      opacity:.55;
-    }
-    .card-body{padding: 14px 14px 16px}
-    .card h3{margin:0 0 6px; font-size:16px}
-    .card p{margin:0; color:var(--muted); font-size:14px; line-height:1.45}
-    .pillrow{display:flex; gap:8px; flex-wrap:wrap; margin-top:10px}
-    .pill{
-      font-size:12px;
-      padding:6px 10px;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,.14);
-      background: rgba(0,0,0,.18);
-      color: rgba(255,255,255,.86);
-    }
-
-    /* --- Contact --- */
-    .contact-grid{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap:14px;
-    }
-    @media (max-width: 920px){ .contact-grid{grid-template-columns:1fr} }
-    .panel{
-      border-radius: 20px;
-      border:1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.05);
-      padding:16px;
-    }
-    .field{
-      display:flex;
-      flex-direction:column;
-      gap:8px;
-      margin-bottom:12px;
-    }
-    label{font-size:13px; color: rgba(255,255,255,.86)}
-    input, textarea{
-      width:100%;
-      background: rgba(0,0,0,.26);
-      border:1px solid rgba(255,255,255,.14);
-      color: var(--ink);
-      border-radius: 14px;
-      padding: 12px 12px;
-      outline:none;
-    }
-    textarea{min-height:120px; resize:vertical}
-    input:focus, textarea:focus{border-color: rgba(0,179,255,.45); box-shadow: 0 0 0 3px rgba(0,179,255,.12)}
-
-    /* --- Footer --- */
-    footer{
-      margin-top:auto;
-      border-top: 1px solid var(--line);
-      background: rgba(0,0,0,.45);
-      backdrop-filter: blur(12px);
-    }
-    .footer-inner{
-      padding: 18px 0 22px;
-      display:grid;
-      grid-template-columns: 1fr auto;
-      gap:14px;
-      align-items:start;
-    }
-    @media (max-width: 920px){ .footer-inner{grid-template-columns:1fr} }
-    .legal-links{
-      display:flex; gap:12px; flex-wrap:wrap; justify-content:flex-end;
-      font-size:13px; color:var(--muted);
-    }
-    .legal-links a{opacity:.92}
-    .legal-links a:hover{color:rgba(255,255,255,.92)}
-    .policy{
-      margin:10px 0 0;
-      color: rgba(255,255,255,.62);
-      font-size:12px;
-      line-height:1.5;
-      max-width: 90ch;
-    }
-
-    /* smooth scroll */
-    html{scroll-behavior:smooth}
-  </style>
-
-  <!-- Structured data -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": "I Shirt You Not",
-    "description": "Custom tees and hoodies with attitude.",
-    "email": "ishirtyounot@gmail.com",
-    "url": "https://example.com/",
-    "image": "https://example.com/assets/og.jpg",
-    "sameAs": [],
-    "makesOffer": [
-      { "@type":"Offer", "name":"Custom T-Shirts" },
-      { "@type":"Offer", "name":"Custom Hoodies" },
-      { "@type":"Offer", "name":"Bulk Orders" }
-    ]
-  }
-  </script>
+@media(max-width:800px){
+  .contact{grid-template-columns:1fr}
+}
+</style>
 </head>
 
 <body>
-  <div class="bg" aria-hidden="true"></div>
-  <div class="grain" aria-hidden="true"></div>
 
-  <div class="wrap">
-    <!-- TOP BAR -->
-    <div class="topbar">
-      <div class="container">
-        <div class="topbar-inner">
-          <div class="email" title="Email us">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d="M4 6h16v12H4V6Z" stroke="currentColor" stroke-width="2"/>
-              <path d="m4 7 8 6 8-6" stroke="currentColor" stroke-width="2"/>
-            </svg>
-            <a href="mailto:ishirtyounot@gmail.com">ishirtyounot@gmail.com</a>
-          </div>
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="container topbar-inner">
+    <div class="topbar-left">
+      ishirtyounot@gmail.com
+    </div>
+    <div class="nav">
+      <a href="#home">Home</a>
+      <a href="#products">Products</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</div>
 
-          <nav class="nav" aria-label="Primary">
-            <a href="#home">Home</a>
-            <a href="#products">Products</a>
-            <a href="#contact">Contact</a>
-          </nav>
+<!-- HERO -->
+<div id="home" class="hero">
+  <div class="container">
+    <div class="hero-card">
+      <img src="logo.png" class="logo" alt="I Shirt You Not Logo">
 
-          <div class="social" aria-label="Social links">
-            <a class="iconbtn" href="#" aria-label="Instagram" title="Instagram">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Z" stroke="currentColor" stroke-width="2"/>
-                <path d="M12 16a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z" stroke="currentColor" stroke-width="2"/>
-                <path d="M17.5 6.5h.01" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
-              </svg>
-            </a>
-            <a class="iconbtn" href="#" aria-label="Facebook" title="Facebook">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M14 9h3V6h-3c-2.2 0-4 1.8-4 4v3H7v3h3v6h3v-6h3l1-3h-4v-3c0-.6.4-1 1-1Z" fill="currentColor"/>
-              </svg>
-            </a>
-          </div>
-        </div>
+      <h1>Custom Tees & Hoodies<br>With Attitude.</h1>
+      <p>
+        Loud designs. Clean prints. No boring shit.  
+        Tell us what you want and we’ll turn it into something you actually want to wear.
+      </p>
+
+      <div class="cta">
+        <a class="btn primary" href="#products">Shop Now</a>
+        <a class="btn" href="#contact">Contact Us</a>
       </div>
     </div>
-
-    <!-- HERO -->
-    <header id="home" class="hero">
-      <div class="container">
-        <div class="hero-card">
-          <div class="hero-inner">
-            <div class="brand">
-              <div class="logo-row">
-                <img class="logo" src="assets/logo.png" alt="I Shirt You Not logo" />
-              </div>
-
-              <h1 class="headline">Custom Tees & Hoodies<br/>with attitude.</h1>
-              <p class="sub">
-                Loud prints. Clean execution. Real quality. Drop your idea and we’ll turn it into something you’d actually wear.
-              </p>
-
-              <div class="cta">
-                <a class="btn primary" href="#products" aria-label="Shop products">
-                  Shop Now
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                    <path d="M7 17 17 7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                    <path d="M9 7h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                  </svg>
-                </a>
-                <a class="btn" href="#contact" aria-label="Contact us">
-                  Contact Us
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                    <path d="M4 6h16v12H4V6Z" stroke="currentColor" stroke-width="2"/>
-                    <path d="m4 7 8 6 8-6" stroke="currentColor" stroke-width="2"/>
-                  </svg>
-                </a>
-              </div>
-            </div>
-
-            <aside class="hero-side" aria-label="Highlights">
-              <div class="mini-grid">
-                <div class="mini">
-                  <b>Fast Turnaround</b>
-                  <span>Need it soon? We’ll tell you straight what’s possible.</span>
-                </div>
-                <div class="mini">
-                  <b>Pro Prints</b>
-                  <span>Crisp colors, durable feel, no cheap bullshit.</span>
-                </div>
-                <div class="mini">
-                  <b>Custom Everything</b>
-                  <span>Text, art, logos, memes — your vibe, your rules.</span>
-                </div>
-                <div class="mini">
-                  <b>Bulk Orders</b>
-                  <span>Teams, events, businesses — we handle volume cleanly.</span>
-                </div>
-              </div>
-            </aside>
-          </div>
-        </div>
-      </div>
-    </header>
-
-    <!-- PRODUCTS -->
-    <section id="products">
-      <div class="container">
-        <div class="section-title">
-          <h2>Products</h2>
-          <div class="hint">Pick a base. Add your design. Done.</div>
-        </div>
-
-        <div class="cards">
-          <article class="card">
-            <div class="thumb" role="img" aria-label="Custom T-Shirts preview"></div>
-            <div class="card-body">
-              <h3>Custom T-Shirts</h3>
-              <p>Perfect for everyday wear, events, and brand drops.</p>
-              <div class="pillrow">
-                <span class="pill">Soft cotton</span>
-                <span class="pill">Full color</span>
-                <span class="pill">Any size</span>
-              </div>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="thumb" role="img" aria-label="Custom Hoodies preview"></div>
-            <div class="card-body">
-              <h3>Custom Hoodies</h3>
-              <p>Heavyweight options for that “don’t mess with me” energy.</p>
-              <div class="pillrow">
-                <span class="pill">Warm + durable</span>
-                <span class="pill">Front / back</span>
-                <span class="pill">Streetwear vibe</span>
-              </div>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="thumb" role="img" aria-label="Bulk orders preview"></div>
-            <div class="card-body">
-              <h3>Bulk Orders</h3>
-              <p>Consistent quality across big orders — clean and on time.</p>
-              <div class="pillrow">
-                <span class="pill">Teams</span>
-                <span class="pill">Businesses</span>
-                <span class="pill">Events</span>
-              </div>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact">
-      <div class="container">
-        <div class="section-title">
-          <h2>Contact Us</h2>
-          <div class="hint">Tell us what you want. We’ll reply with next steps.</div>
-        </div>
-
-        <div class="contact-grid">
-          <div class="panel">
-            <h3 style="margin:0 0 8px;">Email</h3>
-            <p style="margin:0; color:var(--muted); line-height:1.5;">
-              Send your concept, quantity, sizes, colors, and any art files.
-              <br /><br />
-              <b><a href="mailto:ishirtyounot@gmail.com">ishirtyounot@gmail.com</a></b>
-            </p>
-            <p style="margin:14px 0 0; color:rgba(255,255,255,.62); font-size:13px;">
-              Pro tip: if you have a logo, send SVG/AI/PDF if possible. PNG works too.
-            </p>
-          </div>
-
-          <form class="panel" onsubmit="return fakeSubmit(event)">
-            <div class="field">
-              <label for="name">Name</label>
-              <input id="name" name="name" autocomplete="name" placeholder="Your name" required />
-            </div>
-            <div class="field">
-              <label for="email">Email</label>
-              <input id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required />
-            </div>
-            <div class="field">
-              <label for="msg">What do you need?</label>
-              <textarea id="msg" name="msg" placeholder="Shirts/hoodies, qty, sizes, deadline, design idea…"></textarea>
-            </div>
-            <button class="btn primary" type="submit">Send Request</button>
-            <div id="formNote" style="margin-top:10px; color:rgba(255,255,255,.65); font-size:13px;"></div>
-          </form>
-        </div>
-      </div>
-    </section>
-
-    <!-- FOOTER / LEGAL -->
-    <footer>
-      <div class="container">
-        <div class="footer-inner">
-          <div>
-            <div style="font-weight:900; letter-spacing:.2px;">I Shirt You Not</div>
-            <div class="policy">
-              <b>Policy:</b> Custom items are made to order. If there’s a defect or we mess up the print, we’ll fix it.
-              If you change your mind after production starts, that’s on you. By ordering, you agree to our Terms and Policies.
-            </div>
-            <div class="policy">
-              © <span id="year"></span> I Shirt You Not. All rights reserved.
-            </div>
-          </div>
-
-          <div class="legal-links" aria-label="Legal links">
-            <a href="privacy.html">Privacy Policy</a>
-            <a href="terms.html">Terms</a>
-            <a href="refunds.html">Refunds</a>
-            <a href="shipping.html">Shipping</a>
-          </div>
-        </div>
-      </div>
-    </footer>
   </div>
+</div>
 
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
+<!-- PRODUCTS -->
+<section id="products">
+  <div class="container">
+    <h2>Products</h2>
+    <p class="muted">Pick your base. Add your design. Done.</p>
 
-    function fakeSubmit(e){
-      e.preventDefault();
-      const note = document.getElementById("formNote");
-      note.textContent = "Got it — this demo form doesn’t send yet. Use the email link on the left to contact us.";
-      return false;
-    }
-  </script>
+    <div class="cards">
+      <div class="card">
+        <h3>Custom T-Shirts</h3>
+        <p>Soft cotton, bold prints, everyday wear.</p>
+      </div>
+      <div class="card">
+        <h3>Custom Hoodies</h3>
+        <p>Heavyweight streetwear energy.</p>
+      </div>
+      <div class="card">
+        <h3>Bulk Orders</h3>
+        <p>Events, teams, brands, merch drops.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <h2>Contact Us</h2>
+
+    <div class="contact">
+      <div>
+        <p>
+          Email us your idea, quantity, sizes, and deadline:
+        </p>
+        <b>ishirtyounot@gmail.com</b>
+      </div>
+
+      <form onsubmit="return false;">
+        <input placeholder="Your Name"><br><br>
+        <input placeholder="Your Email"><br><br>
+        <textarea placeholder="What do you need?"></textarea><br><br>
+        <button class="btn primary">Send</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container footer-inner">
+    <div>
+      © <span id="year"></span> I Shirt You Not
+    </div>
+    <div class="legal">
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+      <a href="refunds.html">Refunds</a>
+      <a href="shipping.html">Shipping</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.getElementById("year").textContent=new Date().getFullYear();
+</script>
+
 </body>
 </html>
