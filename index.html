@@ -268,36 +268,45 @@
     .hero{height: 420px}
     .heroLogoWrap{width:92%; top:60%}
   }
-  /* ===== MOBILE TOPBAR FIX ===== */
-@media (max-width: 640px){
-  .topbarRow{
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
-    padding: 10px 0;
-  }
 
-  .email{
-    width: 100%;
-    justify-content: center;
-    font-size: 13px;
-  }
+  /* ===== MOBILE TOPBAR FIX (improved email wrapping) ===== */
+  @media (max-width: 640px){
+    .topbarRow{
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      padding: 10px 0;
+    }
 
-  .nav{
-    width: 100%;
-    justify-content: center;
-    gap: 10px;
-  }
+    .email{
+      width: 100%;
+      justify-content: center;
+      font-size: 13px;
+      white-space: normal;      /* allow wrapping */
+      overflow-wrap: anywhere;  /* never clip last char */
+      text-align:center;
+      line-height:1.2;
+    }
 
-  .nav a{
-    flex: 1;
-    text-align: center;
-    padding: 10px 10px;
-    border-radius: 14px;
-    font-size: 13px;
-  }
-}
+    .email a{
+      display:inline-block;
+      max-width: 100%;
+    }
 
+    .nav{
+      width: 100%;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .nav a{
+      flex: 1;
+      text-align: center;
+      padding: 10px 10px;
+      border-radius: 14px;
+      font-size: 13px;
+    }
+  }
 </style>
 </head>
 
@@ -345,7 +354,7 @@
       <div class="headline">
         <h1>CUSTOM TEES AND HOODIES<br><span class="accent">WITH ATTITUDE!</span></h1>
         <p>
-          Loud designs. Clean prints. Real quality. Tell us what you want and we’ll make it look dope as hell.
+          Loud designs. Clean prints. Real quality. Tell us what you want and we’ll make it look dope asf.
         </p>
         <div class="ctaRow">
           <a class="btn primary" href="products.html">SHOP PRODUCTS</a>
