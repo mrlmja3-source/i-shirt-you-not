@@ -316,6 +316,40 @@
     .howGrid{grid-template-columns:1fr}
     .infoRow{grid-template-columns:1fr}
   }
+  /* ===== MOBILE TOPBAR FIX ===== */
+@media (max-width: 640px){
+  .topbarRow{
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px 0;
+  }
+
+  .email{
+    width: 100%;
+    justify-content: center;
+    font-size: 13px;
+  }
+
+  .nav{
+    width: 100%;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .nav a{
+    flex: 1;
+    text-align: center;
+    padding: 10px 10px;
+    border-radius: 14px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 380px){
+  .email a{ font-size: 12px; }
+}
+
 </style>
 </head>
 
