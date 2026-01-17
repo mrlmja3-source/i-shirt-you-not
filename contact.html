@@ -1,12 +1,245 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact — I Shirt You Not</title>
-  <meta name="description" content="Get a quote for custom tees, hoodies, and bulk orders." />
-  <link rel="icon" href="logo.png" />
-  <link rel="stylesheet" href="styles.css" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Contact — I Shirt You Not</title>
+<meta name="description" content="Get a quote for custom tees, hoodies, and bulk orders." />
+<meta name="robots" content="index,follow,max-image-preview:large" />
+<link rel="icon" href="logo.png" />
+
+<style>
+  :root{
+    --ink:#fff;
+    --muted:rgba(255,255,255,.72);
+    --line:rgba(255,255,255,.14);
+
+    --hot:#ff2d55;
+    --ice:#00b3ff;
+    --gold:#ffb703;
+
+    --max:1120px;
+    --shadow: 0 28px 90px rgba(0,0,0,.65);
+  }
+
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;
+    font-family: system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+    color:var(--ink);
+    background:
+      radial-gradient(900px 520px at 18% 20%, rgba(255,45,85,.16), transparent 62%),
+      radial-gradient(820px 520px at 82% 30%, rgba(0,179,255,.14), transparent 62%),
+      radial-gradient(520px 380px at 64% 78%, rgba(255,183,3,.10), transparent 66%),
+      linear-gradient(180deg, #030304 0%, #0b0b0e 55%, #030304 100%);
+    overflow-x:hidden;
+  }
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+  .container{max-width:var(--max); margin:0 auto; padding:0 18px}
+
+  .grain{
+    position:fixed; inset:-40%;
+    pointer-events:none; z-index:-1;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)' opacity='.12'/%3E%3C/svg%3E");
+    transform: rotate(8deg);
+    mix-blend-mode: overlay;
+    opacity:.85;
+  }
+
+  .topbar{
+    position:sticky; top:0; z-index:1000;
+    backdrop-filter: blur(14px);
+    background: rgba(0,0,0,.46);
+    border-bottom:1px solid var(--line);
+  }
+  .topbarRow{
+    display:flex; align-items:center; justify-content:space-between;
+    gap:14px; padding:12px 0;
+  }
+  .email{
+    display:flex; align-items:center; gap:10px;
+    font-size:14px; color:var(--muted); white-space:nowrap;
+  }
+  .email svg{opacity:.9}
+  .nav{
+    display:flex; align-items:center; gap:18px;
+    font-size:14px; font-weight:900; letter-spacing:.2px;
+  }
+  .nav a{
+    padding:8px 12px;
+    border-radius:999px;
+    border:1px solid transparent;
+    opacity:.95;
+  }
+  .nav a:hover{
+    border-color:rgba(255,255,255,.16);
+    background:rgba(255,255,255,.06);
+  }
+  .nav a.active{
+    border-color:rgba(255,255,255,.22);
+    background:rgba(255,255,255,.08);
+  }
+
+  main{padding:18px 0 0}
+  .panel{
+    border-radius: 22px;
+    border:1px solid rgba(255,255,255,.14);
+    background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.02));
+    box-shadow: var(--shadow);
+    overflow:hidden;
+  }
+
+  .header{
+    padding: 24px 22px 16px;
+    text-align:center;
+    background: rgba(0,0,0,.18);
+  }
+  .header img{width:min(360px,70%); margin:0 auto 10px; filter: drop-shadow(0 18px 26px rgba(0,0,0,.65));}
+  .header h1{
+    margin:0;
+    font-size: clamp(28px, 4vw, 40px);
+    letter-spacing:.8px;
+    text-transform:uppercase;
+    font-weight:1000;
+  }
+  .header h1 .accent{color:var(--hot)}
+  .header p{
+    margin:10px auto 0;
+    max-width: 78ch;
+    color: var(--muted);
+    line-height:1.55;
+    font-size: 14px;
+  }
+
+  .quoteWrap{
+    padding: 22px;
+    border-top:1px solid rgba(255,255,255,.10);
+    background: rgba(0,0,0,.18);
+  }
+  .quoteTitle{
+    text-align:center;
+    margin:0;
+    font-size: 26px;
+    letter-spacing:.8px;
+    text-transform:uppercase;
+    font-weight:1000;
+  }
+
+  .quoteGrid{
+    margin-top:16px;
+    display:grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap:18px;
+    align-items:stretch;
+  }
+  .card2{
+    border-radius: 18px;
+    border:1px solid rgba(255,255,255,.14);
+    background: rgba(255,255,255,.05);
+    padding: 16px;
+  }
+  .stars{color:rgba(255,183,3,.95); letter-spacing:2px}
+  .bigQuote{
+    margin:10px 0 0;
+    font-weight:1000;
+    font-size:18px;
+    line-height:1.25;
+  }
+  .qsub{
+    margin:8px 0 0;
+    color:var(--muted);
+    font-size:14px;
+    line-height:1.55;
+  }
+  .who{
+    margin-top:14px;
+    font-weight:900;
+  }
+
+  .testImg{
+    border-radius: 18px;
+    border:1px solid rgba(255,255,255,.14);
+    overflow:hidden;
+    min-height: 320px;
+    position:relative;
+    background:#0b0b0e;
+  }
+  .testImg img{
+    width:100%; height:100%;
+    object-fit:cover;
+    object-position:center;
+    transform: scale(1.02);
+    filter: saturate(1.02) contrast(1.03);
+  }
+  .testImg::after{
+    content:"";
+    position:absolute; inset:0;
+    background: linear-gradient(180deg, rgba(0,0,0,.10), rgba(0,0,0,.58));
+    pointer-events:none;
+  }
+
+  .formWrap{
+    display:grid;
+    grid-template-columns: 1.1fr .9fr;
+    gap:18px;
+    align-items:start;
+    margin-top:18px;
+  }
+  .form{
+    border-radius: 18px;
+    border:1px solid rgba(255,255,255,.14);
+    background: rgba(0,0,0,.22);
+    padding: 14px;
+  }
+  .row{display:grid; grid-template-columns:1fr; gap:10px}
+  label{font-size:12px; color:rgba(255,255,255,.82)}
+  input,textarea{
+    width:100%;
+    border-radius: 12px;
+    border:1px solid rgba(255,255,255,.14);
+    background: rgba(0,0,0,.30);
+    color: var(--ink);
+    padding: 12px;
+    outline:none;
+  }
+  textarea{min-height: 130px; resize:vertical}
+  input:focus,textarea:focus{
+    border-color: rgba(0,179,255,.45);
+    box-shadow: 0 0 0 3px rgba(0,179,255,.12);
+  }
+
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center;
+    padding: 12px 16px;
+    border-radius: 12px;
+    border:1px solid rgba(255,255,255,.16);
+    background: rgba(255,255,255,.06);
+    font-weight:950;
+    letter-spacing:.6px;
+    text-transform:uppercase;
+    cursor:pointer;
+  }
+  .btn.primary{
+    border:none;
+    color:#0b0b0e;
+    background: linear-gradient(90deg, rgba(255,45,85,.92), rgba(0,179,255,.76));
+  }
+  .btn:hover{filter:brightness(1.04)}
+
+  .legalLine{
+    margin-top:16px;
+    color: rgba(255,255,255,.70);
+    font-size:12px;
+    text-align:center;
+  }
+
+  @media (max-width: 980px){
+    .quoteGrid{grid-template-columns:1fr}
+    .formWrap{grid-template-columns:1fr}
+  }
+</style>
 </head>
 
 <body>
@@ -32,105 +265,83 @@
     </div>
   </div>
 
-  <main class="hero">
-    <div class="container">
-      <section class="card">
-        <div class="section center">
-          <img class="logo" src="logo.png" alt="I Shirt You Not logo" />
-          <h1 class="h1">Contact Us<br><span class="accent">Get A Quote</span></h1>
-          <p class="sub">Send qty, sizes, colors, deadline, and any artwork. We’ll reply with pricing + timeline.</p>
+  <main class="container">
+    <section class="panel">
 
-          <div class="cta">
-            <a class="btn" href="products.html">VIEW PRODUCTS</a>
-            <a class="btn primary" href="mailto:ishirtyounot@gmail.com">EMAIL NOW</a>
+      <div class="header">
+        <img src="logo.png" alt="I Shirt You Not logo" />
+        <h1>CONTACT US<br><span class="accent">GET A QUOTE</span></h1>
+        <p>Tell us what you need (qty, sizes, colors, deadline, and what you want printed). We’ll reply fast.</p>
+      </div>
+
+      <div class="quoteWrap">
+        <h2 class="quoteTitle">GET A QUOTE FOR YOUR CUSTOM ORDER</h2>
+
+        <div class="quoteGrid">
+          <div class="card2">
+            <div class="stars">★★★★★</div>
+            <div class="bigQuote">“The best custom tees in the game!”</div>
+            <div class="qsub">
+              Amazing quality and fast service. The designs are sick and the shirts are super comfortable.
+            </div>
+            <div class="who">Marilyn S.</div>
+          </div>
+
+          <div class="testImg" aria-label="Testimonial photo">
+            <img src="testimonial.jpg" alt="Happy customer" />
           </div>
         </div>
 
-        <div class="stage">
-          <div class="split">
-            <!-- Testimonial panel (styled “AI woman” vibe) -->
-            <div class="panel">
-              <div class="stars">★★★★★</div>
-              <div class="quote">“Incredible quality and fast service!”</div>
-              <div class="qsub">
-                The designs came out clean, colors popped, and the shirts feel legit.
-                This is the kind of merch that doesn’t look cheap.
-              </div>
-
-              <div class="person">
-                <div class="avatar" aria-hidden="true"></div>
-                <div>
-                  <div style="font-weight:950;">Jessica L.</div>
-                  <div style="color:var(--muted); font-size:13px; margin-top:2px;">Verified customer</div>
-                </div>
-              </div>
-
-              <div class="qsub" style="margin-top:14px;">
-                Email: <b><a href="mailto:ishirtyounot@gmail.com">ishirtyounot@gmail.com</a></b><br>
-                Typical response time: same day.
-              </div>
+        <div class="formWrap">
+          <div class="card2">
+            <div style="font-weight:1000; text-transform:uppercase; letter-spacing:.6px;">Email</div>
+            <div class="qsub" style="margin-top:8px;">
+              <a href="mailto:ishirtyounot@gmail.com"><b>ishirtyounot@gmail.com</b></a><br>
+              (Fastest way to get pricing + timeline)
             </div>
+            <div class="qsub" style="margin-top:10px;">
+              Include: item type, quantity, sizes, colors, deadline, and attach your design if you have it.
+            </div>
+          </div>
 
-            <!-- Quote form -->
-            <form class="panel" onsubmit="return demoSubmit(event)">
-              <div class="field">
+          <form class="form" onsubmit="return demoSubmit(event)">
+            <div class="row">
+              <div>
                 <label for="name">Name</label>
-                <input id="name" name="name" autocomplete="name" placeholder="Your name" required />
+                <input id="name" name="name" placeholder="Name" required />
               </div>
 
-              <div class="field">
+              <div>
                 <label for="email">Email</label>
-                <input id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required />
+                <input id="email" name="email" type="email" placeholder="Email" required />
               </div>
 
-              <div class="field">
+              <div>
                 <label for="details">Order details</label>
-                <textarea id="details" name="details" placeholder="Tee/hoodie, qty, sizes, colors, deadline, design idea…"></textarea>
+                <textarea id="details" name="details" placeholder="Qty, sizes, colors, deadline, and what you want printed…"></textarea>
               </div>
 
-              <button class="btn primary" type="submit">SEND REQUEST</button>
-              <div id="note" class="qsub" style="margin-top:10px;"></div>
-              <div class="qsub" style="margin-top:10px;">
-                Prefer email? <b><a href="mailto:ishirtyounot@gmail.com">ishirtyounot@gmail.com</a></b>
-              </div>
-            </form>
-          </div>
-        </div>
-      </section>
-
-      <footer>
-        <div class="container">
-          <div class="footerInner">
-            <div>
-              <div style="font-weight:950;">I Shirt You Not</div>
-              <div class="policy">
-                <b>Policy:</b> Custom items are made-to-order. If there’s a defect or we mess up the print, we’ll fix it.
-                If production starts after approval, changes may not be possible.
-              </div>
-              <div class="policy">© <span id="year"></span> I Shirt You Not. All rights reserved.</div>
+              <button class="btn primary" type="submit">SEND</button>
+              <div class="qsub" id="note" style="margin:0"></div>
             </div>
-            <div class="legal">
-              <a href="privacy.html">Privacy</a>
-              <a href="terms.html">Terms</a>
-              <a href="refunds.html">Refunds</a>
-              <a href="shipping.html">Shipping</a>
-            </div>
-          </div>
+          </form>
         </div>
-      </footer>
 
-    </div>
+        <div class="legalLine">© <span id="year"></span> I Shirt You Not. All rights reserved.</div>
+      </div>
+
+    </section>
   </main>
 
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
 
-    function demoSubmit(e){
-      e.preventDefault();
-      document.getElementById("note").textContent =
-        "This form is currently a demo (no backend yet). Email us at ishirtyounot@gmail.com and we’ll take care of it.";
-      return false;
-    }
-  </script>
+  function demoSubmit(e){
+    e.preventDefault();
+    document.getElementById("note").textContent =
+      "Demo form (no backend yet). Email ishirtyounot@gmail.com to place an order.";
+    return false;
+  }
+</script>
 </body>
 </html>
