@@ -160,7 +160,7 @@
     line-height:1.55;
   }
 
-  /* title + testimonial card on right */
+  /* Top row: title + BIG testimonial card on right */
   .quoteTopRow{
     display:flex;
     align-items:flex-start;
@@ -178,33 +178,33 @@
     letter-spacing:.6px;
     text-transform:uppercase;
     font-weight:1000;
+    padding-top: 6px;
   }
 
-  /* ✅ FIX: show the WHOLE testimonial image (no cropping) */
+  /* ✅ BIGGER testimonial card that fills the space */
   .testImg{
-    width: 210px;               /* small card */
-    height: 240px;              /* taller than wide, fits most testimonial graphics */
+    width: 320px;               /* bigger */
+    height: 300px;              /* fills the row without being absurd */
     flex: 0 0 auto;
 
-    border-radius: 16px;
+    border-radius: 18px;
     border:1px solid rgba(255,255,255,.14);
-    background: rgba(0,0,0,.30);
+    background: rgba(255,255,255,.04);
     overflow:hidden;
 
     display:grid;
     place-items:center;
 
-    padding: 10px;              /* breathing room so edges don’t touch border */
+    padding: 10px;
   }
   .testImg img{
-    width: 100%;
-    height: 100%;
-    object-fit: contain;        /* <-- THIS is the main fix */
-    object-position: center;
-    filter: none;               /* don’t muddy the image */
+    width:100%;
+    height:100%;
+    object-fit: contain;        /* show the whole image */
+    object-position:center;
   }
 
-  /* LESS CROWDED: 2 columns only */
+  /* 2 columns only */
   .quoteLayout{
     display:grid;
     grid-template-columns: 1fr 1fr;
@@ -261,11 +261,10 @@
   }
   .btn:hover{filter:brightness(1.04)}
 
-  /* stack mini cards to reduce clutter */
   .infoRow{
     margin-top:14px;
     display:grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; /* less clutter */
     gap:10px;
   }
   .infoTitle{
@@ -307,21 +306,16 @@
     text-align:center;
   }
 
-  /* responsive */
   @media (max-width: 980px){
     .howGrid{grid-template-columns:1fr}
     .quoteLayout{grid-template-columns:1fr}
-
-    .quoteTopRow{
-      flex-direction:column;
-      align-items:center;
-      text-align:center;
-    }
-    .quoteTitle{ text-align:center; }
+    .quoteTopRow{flex-direction:column; align-items:center; text-align:center}
+    .quoteTitle{text-align:center}
 
     .testImg{
-      width: 260px;
-      height: 280px;
+      width: 340px;
+      max-width: 100%;
+      height: 300px;
     }
   }
 
@@ -349,12 +343,12 @@
       border-radius: 14px;
       font-size: 13px;
     }
-
     .quoteWrap{ padding: 22px 16px 24px; }
 
     .testImg{
-      width: 240px;
-      height: 260px;
+      width: 320px;
+      max-width: 100%;
+      height: 280px;
     }
   }
 
