@@ -1,12 +1,353 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>I Shirt You Not — Custom Tee’s With Attitude</title>
-  <meta name="description" content="Custom tees and hoodies with attitude. Bold prints, fast turnaround, pro-quality results." />
-  <link rel="icon" href="logo.png" />
-  <link rel="stylesheet" href="styles.css" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>I Shirt You Not — Custom Tee’s With Attitude</title>
+<meta name="description" content="Custom tees and hoodies with attitude. Bold prints. Fast turnaround. Real quality." />
+<meta name="robots" content="index,follow,max-image-preview:large" />
+<link rel="icon" href="logo.png" />
+
+<style>
+  :root{
+    --bg0:#050506;
+    --bg1:#0b0b0e;
+    --ink:#fff;
+    --muted:rgba(255,255,255,.72);
+    --line:rgba(255,255,255,.14);
+
+    --hot:#ff2d55;
+    --ice:#00b3ff;
+    --gold:#ffb703;
+
+    --max:1120px;
+    --r:18px;
+    --shadow: 0 28px 90px rgba(0,0,0,.65);
+
+    --glass:rgba(255,255,255,.06);
+    --glass2:rgba(255,255,255,.04);
+  }
+
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;
+    font-family: system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+    color:var(--ink);
+    background:
+      radial-gradient(900px 520px at 18% 20%, rgba(255,45,85,.16), transparent 62%),
+      radial-gradient(820px 520px at 82% 30%, rgba(0,179,255,.14), transparent 62%),
+      radial-gradient(520px 380px at 64% 78%, rgba(255,183,3,.10), transparent 66%),
+      linear-gradient(180deg, #030304 0%, #0b0b0e 55%, #030304 100%);
+    overflow-x:hidden;
+  }
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+
+  .container{max-width:var(--max); margin:0 auto; padding:0 18px}
+
+  /* gritty grain */
+  .grain{
+    position:fixed; inset:-40%;
+    pointer-events:none; z-index:-1;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)' opacity='.12'/%3E%3C/svg%3E");
+    transform: rotate(8deg);
+    mix-blend-mode: overlay;
+    opacity:.85;
+  }
+
+  /* top bar */
+  .topbar{
+    position:sticky; top:0; z-index:50;
+    backdrop-filter: blur(14px);
+    background: rgba(0,0,0,.46);
+    border-bottom:1px solid var(--line);
+  }
+  .topbarRow{
+    display:flex; align-items:center; justify-content:space-between;
+    gap:14px; padding:12px 0;
+  }
+  .email{
+    display:flex; align-items:center; gap:10px;
+    font-size:14px; color:var(--muted); white-space:nowrap;
+  }
+  .email svg{opacity:.9}
+  .nav{
+    display:flex; align-items:center; gap:18px;
+    font-size:14px; font-weight:900; letter-spacing:.2px;
+  }
+  .nav a{
+    padding:8px 12px;
+    border-radius:999px;
+    border:1px solid transparent;
+    opacity:.95;
+  }
+  .nav a:hover{
+    border-color:rgba(255,255,255,.16);
+    background:rgba(255,255,255,.06);
+  }
+  .nav a.active{
+    border-color:rgba(255,255,255,.22);
+    background:rgba(255,255,255,.08);
+  }
+
+  /* page layout sections */
+  main{padding:18px 0 0}
+  .panel{
+    border-radius: 22px;
+    border:1px solid rgba(255,255,255,.14);
+    background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.02));
+    box-shadow: var(--shadow);
+    overflow:hidden;
+  }
+
+  /* HERO IMAGE SECTION (big photo) */
+  .hero{
+    position:relative;
+    height: 360px;
+    border-bottom:1px solid rgba(255,255,255,.10);
+    background: #111;
+  }
+  .heroImg{
+    position:absolute; inset:0;
+    background:
+      linear-gradient(180deg, rgba(0,0,0,.25), rgba(0,0,0,.65)),
+      url("hero.jpg") center/cover no-repeat;
+    filter: saturate(1.02) contrast(1.05);
+  }
+  /* fallback if hero.jpg not present */
+  .heroImg.fallback{
+    background:
+      radial-gradient(900px 420px at 40% 30%, rgba(255,255,255,.08), transparent 60%),
+      radial-gradient(680px 380px at 70% 55%, rgba(0,179,255,.18), transparent 62%),
+      radial-gradient(620px 360px at 25% 70%, rgba(255,45,85,.16), transparent 62%),
+      linear-gradient(180deg, #141418, #08080a);
+  }
+
+  /* centered logo hovering in the hero like your screenshot */
+  .heroLogoWrap{
+    position:absolute;
+    left:50%; top:50%;
+    transform: translate(-50%,-58%);
+    width: min(420px, 70%);
+    filter: drop-shadow(0 18px 26px rgba(0,0,0,.65));
+  }
+
+  /* CTA button in hero */
+  .heroCta{
+    position:absolute;
+    left:50%; bottom:18px;
+    transform: translateX(-50%);
+    width: min(360px, 88%);
+    display:flex; justify-content:center;
+  }
+  .btnGold{
+    display:inline-flex; align-items:center; justify-content:center;
+    width:100%;
+    padding: 14px 16px;
+    border-radius: 12px;
+    border:1px solid rgba(255,183,3,.55);
+    background: linear-gradient(90deg, rgba(255,183,3,.96), rgba(255,45,85,.75));
+    color:#130a00;
+    font-weight:1000;
+    letter-spacing:.7px;
+    text-transform:uppercase;
+    box-shadow: 0 20px 40px rgba(0,0,0,.45);
+    cursor:pointer;
+  }
+  .btnGold:hover{filter:brightness(1.04)}
+
+  /* HEADLINE SECTION */
+  .headline{
+    padding: 26px 22px 18px;
+    text-align:center;
+    background: rgba(0,0,0,.18);
+  }
+  .headline h1{
+    margin:0;
+    font-size: clamp(28px, 4vw, 44px);
+    letter-spacing:.8px;
+    text-transform:uppercase;
+    font-weight:1000;
+  }
+  .headline h1 .accent{color:var(--hot)}
+  .headline p{
+    margin:10px auto 0;
+    max-width: 76ch;
+    color: var(--muted);
+    line-height:1.55;
+    font-size: 14px;
+  }
+
+  .ctaRow{
+    margin-top:16px;
+    display:flex;
+    justify-content:center;
+    gap:12px;
+    flex-wrap:wrap;
+  }
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center;
+    padding: 12px 16px;
+    border-radius: 12px;
+    border:1px solid rgba(255,255,255,.16);
+    background: rgba(255,255,255,.06);
+    font-weight:950;
+    letter-spacing:.6px;
+    text-transform:uppercase;
+  }
+  .btn.primary{
+    border:none;
+    color:#0b0b0e;
+    background: linear-gradient(90deg, rgba(255,45,85,.92), rgba(0,179,255,.76));
+  }
+  .btn:hover{filter:brightness(1.04)}
+
+  /* MID SECTION with right image like screenshot */
+  .mid{
+    display:grid;
+    grid-template-columns: 1.15fr .85fr;
+    gap:18px;
+    padding: 22px;
+    border-top:1px solid rgba(255,255,255,.10);
+    background: rgba(0,0,0,.18);
+  }
+  .midCopy h2{
+    margin:0;
+    font-size: 18px;
+    letter-spacing:.6px;
+    text-transform:uppercase;
+    font-weight:1000;
+  }
+  .midCopy p{
+    margin:10px 0 0;
+    color:var(--muted);
+    line-height:1.6;
+    font-size:14px;
+  }
+  .midImg{
+    border-radius: 16px;
+    border:1px solid rgba(255,255,255,.14);
+    overflow:hidden;
+    background:
+      linear-gradient(180deg, rgba(0,0,0,.15), rgba(0,0,0,.55)),
+      url("rack.jpg") center/cover no-repeat;
+    min-height: 180px;
+  }
+  .midImg.fallback{
+    background:
+      radial-gradient(220px 140px at 30% 30%, rgba(0,179,255,.22), transparent 62%),
+      radial-gradient(220px 140px at 70% 55%, rgba(255,45,85,.18), transparent 62%),
+      linear-gradient(135deg, rgba(255,255,255,.08), rgba(255,255,255,.02));
+  }
+
+  /* QUOTE + TESTIMONIAL SECTION */
+  .quoteWrap{
+    padding: 22px;
+    border-top:1px solid rgba(255,255,255,.10);
+    background: rgba(0,0,0,.18);
+  }
+  .quoteTitle{
+    text-align:center;
+    margin:0;
+    font-size: 26px;
+    letter-spacing:.8px;
+    text-transform:uppercase;
+    font-weight:1000;
+  }
+
+  .quoteGrid{
+    margin-top:16px;
+    display:grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap:18px;
+    align-items:stretch;
+  }
+  .card2{
+    border-radius: 18px;
+    border:1px solid rgba(255,255,255,.14);
+    background: rgba(255,255,255,.05);
+    padding: 16px;
+  }
+  .stars{color:rgba(255,183,3,.95); letter-spacing:2px}
+  .bigQuote{
+    margin:10px 0 0;
+    font-weight:1000;
+    font-size:18px;
+    line-height:1.25;
+  }
+  .qsub{
+    margin:8px 0 0;
+    color:var(--muted);
+    font-size:14px;
+    line-height:1.55;
+  }
+  .who{
+    margin-top:14px;
+    font-weight:900;
+  }
+
+  .testImg{
+    border-radius: 18px;
+    border:1px solid rgba(255,255,255,.14);
+    overflow:hidden;
+    background:
+      linear-gradient(180deg, rgba(0,0,0,.10), rgba(0,0,0,.58)),
+      url("testimonial.jpg") center/cover no-repeat;
+    min-height: 260px;
+  }
+  .testImg.fallback{
+    background:
+      radial-gradient(260px 160px at 30% 30%, rgba(255,255,255,.08), transparent 62%),
+      radial-gradient(220px 140px at 70% 55%, rgba(0,179,255,.18), transparent 62%),
+      linear-gradient(135deg, rgba(255,45,85,.12), rgba(255,255,255,.03));
+  }
+
+  /* FOOTER + FORM STRIP */
+  .bottom{
+    display:grid;
+    grid-template-columns: 1.1fr .9fr;
+    gap:18px;
+    align-items:end;
+    padding: 18px 22px 22px;
+    border-top:1px solid rgba(255,255,255,.10);
+    background: rgba(0,0,0,.22);
+  }
+  .legalLine{
+    color: rgba(255,255,255,.70);
+    font-size:12px;
+  }
+  .form{
+    border-radius: 18px;
+    border:1px solid rgba(255,255,255,.14);
+    background: rgba(0,0,0,.22);
+    padding: 14px;
+  }
+  .row{display:grid; grid-template-columns:1fr; gap:10px}
+  label{font-size:12px; color:rgba(255,255,255,.82)}
+  input,textarea{
+    width:100%;
+    border-radius: 12px;
+    border:1px solid rgba(255,255,255,.14);
+    background: rgba(0,0,0,.30);
+    color: var(--ink);
+    padding: 12px;
+    outline:none;
+  }
+  textarea{min-height: 110px; resize:vertical}
+  input:focus,textarea:focus{
+    border-color: rgba(0,179,255,.45);
+    box-shadow: 0 0 0 3px rgba(0,179,255,.12);
+  }
+
+  /* responsive */
+  @media (max-width: 980px){
+    .mid{grid-template-columns:1fr}
+    .quoteGrid{grid-template-columns:1fr}
+    .bottom{grid-template-columns:1fr}
+    .hero{height: 320px}
+  }
+</style>
 </head>
 
 <body>
@@ -24,7 +365,7 @@
         </div>
 
         <nav class="nav" aria-label="Primary">
-          <a class="active" href="index.html">Home</a>
+          <a class="active" href="#">Home</a>
           <a href="products.html">Products</a>
           <a href="contact.html">Contact</a>
         </nav>
@@ -32,70 +373,133 @@
     </div>
   </div>
 
-  <main class="hero">
-    <div class="container">
-      <section class="card">
-        <div class="section center">
-          <img class="logo" src="logo.png" alt="I Shirt You Not logo" />
-          <h1 class="h1">Custom Tees And Hoodies<br><span class="accent">With Attitude!</span></h1>
-          <p class="sub">
-            Loud designs. Clean prints. Real quality. Tell us what you want and we’ll make it look dope as hell.
+  <main class="container">
+    <section class="panel">
+
+      <!-- HERO IMAGE -->
+      <div class="hero">
+        <!-- If you don't have hero.jpg yet, add class "fallback" below -->
+        <div class="heroImg" id="heroImg"></div>
+
+        <div class="heroLogoWrap">
+          <img src="logo.png" alt="I Shirt You Not logo" />
+        </div>
+
+        <div class="heroCta">
+          <a class="btnGold" href="contact.html">GET A QUOTE</a>
+        </div>
+      </div>
+
+      <!-- HEADLINE -->
+      <div class="headline">
+        <h1>CUSTOM TEES AND HOODIES<br><span class="accent">WITH ATTITUDE!</span></h1>
+        <p>
+          Loud designs. Clean prints. Real quality. Tell us what you want and we’ll make it look dope as hell.
+        </p>
+        <div class="ctaRow">
+          <a class="btn primary" href="products.html">SHOP PRODUCTS</a>
+          <a class="btn" href="contact.html">GET A QUOTE</a>
+        </div>
+      </div>
+
+      <!-- MID SECTION -->
+      <div class="mid">
+        <div class="midCopy">
+          <h2>Your attitude. Your style. Your tee.</h2>
+          <p>
+            Welcome to the dopest custom T-shirt shop on the web. We specialize in custom tees and hoodies that match your personality.
+            Bold, unique, and printed clean so you stand out in any crowd.
           </p>
-
-          <div class="cta">
-            <a class="btn primary" href="products.html">SHOP PRODUCTS</a>
-            <a class="btn" href="contact.html">GET A QUOTE</a>
+          <div class="ctaRow" style="justify-content:flex-start; margin-top:14px">
+            <a class="btn primary" href="products.html">SHOP NOW</a>
           </div>
         </div>
 
-        <div class="stage">
-          <div class="stageGrid" aria-label="Featured tiles">
-            <div class="stageItem">
-              <div class="mockThumb"><div class="pill">TEE</div></div>
-              <b>Custom T-Shirts</b>
-              <span>Soft cotton, sharp prints, full color.</span>
-            </div>
-            <div class="stageItem">
-              <div class="mockThumb"><div class="pill">HOODIE</div></div>
-              <b>Signature Hoodies</b>
-              <span>Heavyweight streetwear energy.</span>
-            </div>
-            <div class="stageItem">
-              <div class="mockThumb"><div class="pill">BULK</div></div>
-              <b>Events / Teams</b>
-              <span>Consistent results for big orders.</span>
-            </div>
-          </div>
-        </div>
-      </section>
+        <!-- If you don't have rack.jpg yet, add class "fallback" below -->
+        <div class="midImg" id="rackImg" aria-label="Clothing rack image"></div>
+      </div>
 
-      <footer>
-        <div class="container">
-          <div class="footerInner">
+      <!-- QUOTE + TESTIMONIAL -->
+      <div class="quoteWrap">
+        <h2 class="quoteTitle">GET A QUOTE FOR YOUR CUSTOM ORDER</h2>
+
+        <div class="quoteGrid">
+          <div class="card2">
+            <div class="stars">★★★★★</div>
+            <div class="bigQuote">“The best custom tees in the game!”</div>
+            <div class="qsub">
+              Amazing quality and fast service. The designs are sick and the shirts are super comfortable.
+            </div>
+            <div class="who">Dave M.</div>
+          </div>
+
+          <!-- If you don't have testimonial.jpg yet, add class "fallback" below -->
+          <div class="testImg" id="testImg" aria-label="Testimonial photo"></div>
+        </div>
+      </div>
+
+      <!-- BOTTOM FOOTER + FORM -->
+      <div class="bottom">
+        <div>
+          <div class="legalLine">© <span id="year"></span> I Shirt You Not. All rights reserved.</div>
+        </div>
+
+        <form class="form" onsubmit="return demoSubmit(event)">
+          <div class="row">
             <div>
-              <div style="font-weight:950; letter-spacing:.2px;">I Shirt You Not</div>
-              <div class="policy">
-                <b>Policy:</b> Custom items are made-to-order. If there’s a defect or we mess up the print, we’ll fix it.
-                If you approve artwork and production starts, changes may not be possible.
-              </div>
-              <div class="policy">© <span id="year"></span> I Shirt You Not. All rights reserved.</div>
+              <label for="name">Name</label>
+              <input id="name" name="name" placeholder="Name" required />
             </div>
 
-            <div class="legal" aria-label="Legal links">
-              <a href="privacy.html">Privacy</a>
-              <a href="terms.html">Terms</a>
-              <a href="refunds.html">Refunds</a>
-              <a href="shipping.html">Shipping</a>
+            <div>
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" placeholder="Email" required />
             </div>
+
+            <div>
+              <label for="details">Order details</label>
+              <textarea id="details" name="details" placeholder="Qty, sizes, colors, deadline, and what you want printed…"></textarea>
+            </div>
+
+            <button class="btn primary" type="submit">SEND</button>
+            <div class="qsub" id="note" style="margin:0"></div>
           </div>
-        </div>
-      </footer>
+        </form>
+      </div>
 
-    </div>
+    </section>
   </main>
 
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  // If images are missing, auto-switch those blocks to "fallback" visuals (no broken look)
+  function imgExists(url){
+    return new Promise((resolve)=>{
+      const img = new Image();
+      img.onload = ()=>resolve(true);
+      img.onerror = ()=>resolve(false);
+      img.src = url + "?v=" + Date.now();
+    });
+  }
+
+  (async ()=>{
+    const heroOk = await imgExists("hero.jpg");
+    if(!heroOk) document.getElementById("heroImg").classList.add("fallback");
+
+    const rackOk = await imgExists("rack.jpg");
+    if(!rackOk) document.getElementById("rackImg").classList.add("fallback");
+
+    const testOk = await imgExists("testimonial.jpg");
+    if(!testOk) document.getElementById("testImg").classList.add("fallback");
+  })();
+
+  function demoSubmit(e){
+    e.preventDefault();
+    document.getElementById("note").textContent =
+      "Demo form (no backend yet). Email ishirtyounot@gmail.com to place an order.";
+    return false;
+  }
+</script>
 </body>
 </html>
