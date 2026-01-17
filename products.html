@@ -202,46 +202,46 @@
     font-size:12px;
   }
 
-  /* mobile */
+  /* responsive grid for 6 cards */
+  @media (max-width: 1100px){
+    .grid{grid-template-columns: repeat(2, 1fr);}
+  }
   @media (max-width: 980px){
     .grid{grid-template-columns:1fr}
     .card{min-height:unset}
     .photo{height: 240px}
   }
+
   /* ===== MOBILE TOPBAR FIX ===== */
-@media (max-width: 640px){
-  .topbarRow{
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
-    padding: 10px 0;
+  @media (max-width: 640px){
+    .topbarRow{
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      padding: 10px 0;
+    }
+    .email{
+      width: 100%;
+      justify-content: center;
+      font-size: 13px;
+    }
+    .nav{
+      width: 100%;
+      justify-content: center;
+      gap: 10px;
+    }
+    .nav a{
+      flex: 1;
+      text-align: center;
+      padding: 10px 10px;
+      border-radius: 14px;
+      font-size: 13px;
+    }
   }
 
-  .email{
-    width: 100%;
-    justify-content: center;
-    font-size: 13px;
+  @media (max-width: 380px){
+    .email a{ font-size: 12px; }
   }
-
-  .nav{
-    width: 100%;
-    justify-content: center;
-    gap: 10px;
-  }
-
-  .nav a{
-    flex: 1;
-    text-align: center;
-    padding: 10px 10px;
-    border-radius: 14px;
-    font-size: 13px;
-  }
-}
-
-@media (max-width: 380px){
-  .email a{ font-size: 12px; }
-}
-
 </style>
 </head>
 
@@ -277,6 +277,7 @@
       </div>
 
       <div class="grid">
+        <!-- Existing 3 -->
         <article class="card">
           <div class="photo">
             <img src="justified-1.jpg" alt="Justified tee - streetwear mockup 1">
@@ -315,6 +316,49 @@
             <div class="row">
               <a class="pill primary" href="contact.html">GET A QUOTE</a>
               <a class="pill" href="contact.html">BULK ORDER</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- NEW 3 added under the others -->
+        <article class="card">
+          <div class="photo">
+            <img src="gildantshirt.jpg" alt="Gildan T-Shirt">
+          </div>
+          <div class="body">
+            <h3 class="title">GILDAN — T-SHIRT</h3>
+            <p class="desc">Reliable everyday tee. Great for custom prints, events, and streetwear drops.</p>
+            <div class="row">
+              <a class="pill primary" href="contact.html">GET A QUOTE</a>
+              <a class="pill" href="contact.html">CUSTOMIZE</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="photo">
+            <img src="gildanheavycottonhoodie.jpg" alt="Gildan Heavy Cotton Hoodie">
+          </div>
+          <div class="body">
+            <h3 class="title">GILDAN — HEAVY COTTON HOODIE</h3>
+            <p class="desc">Warm, durable hoodie option. Perfect for merch, brands, and seasonal drops.</p>
+            <div class="row">
+              <a class="pill primary" href="contact.html">GET A QUOTE</a>
+              <a class="pill" href="contact.html">CUSTOMIZE</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="photo">
+            <img src="gildancrewneck.jpg" alt="Gildan Crewneck Sweatshirt">
+          </div>
+          <div class="body">
+            <h3 class="title">GILDAN — CREWNECK</h3>
+            <p class="desc">Classic crewneck sweatshirt. Clean prints, solid fit, easy everyday wear.</p>
+            <div class="row">
+              <a class="pill primary" href="contact.html">GET A QUOTE</a>
+              <a class="pill" href="contact.html">CUSTOMIZE</a>
             </div>
           </div>
         </article>
