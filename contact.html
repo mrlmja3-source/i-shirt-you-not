@@ -349,6 +349,17 @@
 @media (max-width: 380px){
   .email a{ font-size: 12px; }
 }
+/* ===== MOBILE: TESTIMONIAL IMAGE SHOULD NOT BE HUGE ===== */
+@media (max-width: 640px){
+  .testImg{
+    min-height: 0;          /* kill the desktop min-height */
+    height: 220px;          /* fits the screen nicely */
+  }
+  .testImg img{
+    transform: none;        /* stop the zoom on mobile */
+    object-position: 50% 35%; /* keeps face higher in frame */
+  }
+}
 
 </style>
 </head>
