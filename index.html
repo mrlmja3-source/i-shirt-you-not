@@ -20,6 +20,12 @@
 
     --max:1120px;
     --shadow: 0 28px 90px rgba(0,0,0,.65);
+
+    /* polish tokens */
+    --radius: 22px;
+    --cardRadius: 18px;
+    --pad: 22px;
+    --gap: 18px;
   }
 
   *{box-sizing:border-box}
@@ -86,9 +92,9 @@
   }
 
   /* panel */
-  main{padding:18px 0 0}
+  main{padding:22px 0 28px}
   .panel{
-    border-radius: 22px;
+    border-radius: var(--radius);
     border:1px solid rgba(255,255,255,.14);
     background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.02));
     box-shadow: var(--shadow);
@@ -98,11 +104,12 @@
   /* HERO */
   .hero{
     position:relative;
-    height: 520px;
+    height: 560px;
     border-bottom:1px solid rgba(255,255,255,.10);
     overflow:hidden;
     background:#0b0b0e;
   }
+  /* if you later add a hero background image, drop it in here */
   .heroPhoto{
     position:absolute; inset:0;
     width:100%; height:100%;
@@ -116,32 +123,56 @@
     background:
       radial-gradient(900px 520px at 20% 20%, rgba(255,45,85,.18), transparent 62%),
       radial-gradient(820px 520px at 82% 30%, rgba(0,179,255,.14), transparent 62%),
-      linear-gradient(180deg, rgba(0,0,0,.20), rgba(0,0,0,.72));
+      radial-gradient(520px 380px at 64% 78%, rgba(255,183,3,.10), transparent 66%),
+      linear-gradient(180deg, rgba(0,0,0,.18), rgba(0,0,0,.78));
     pointer-events:none;
   }
+
+  /* NEW: centered hero content container */
+  .heroInner{
+    position:absolute; inset:0;
+    display:grid;
+    place-items:center;
+    padding: 28px 18px;
+  }
+  .heroCard{
+    width: min(860px, 100%);
+    border-radius: 24px;
+    border:1px solid rgba(255,255,255,.14);
+    background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+    box-shadow: 0 30px 90px rgba(0,0,0,.55);
+    padding: clamp(18px, 3vw, 28px);
+    backdrop-filter: blur(10px);
+    text-align:center;
+  }
+
   .heroLogoWrap{
-    position:absolute;
-    left:50%;
-    top: 56%;
-    transform: translate(-50%,-50%);
-    width: min(520px, 78%);
-    display:flex; justify-content:center;
+    width: min(440px, 78%);
+    margin: 0 auto 14px;
     filter: drop-shadow(0 18px 26px rgba(0,0,0,.65));
     pointer-events:none;
   }
   .heroLogo{width:100%; height:auto;}
-  .heroCta{
-    position:absolute;
-    left:50%; bottom:22px;
-    transform: translateX(-50%);
-    width: min(360px, 86%);
-    display:flex; justify-content:center;
-    z-index:2;
+
+  .heroKicker{
+    margin: 0 auto;
+    max-width: 78ch;
+    color: rgba(255,255,255,.82);
+    font-size: 14px;
+    line-height: 1.6;
   }
+
+  .heroButtons{
+    margin-top: 16px;
+    display:flex;
+    justify-content:center;
+    gap:12px;
+    flex-wrap:wrap;
+  }
+
   .btnGold{
     display:inline-flex; align-items:center; justify-content:center;
-    width:100%;
-    padding: 14px 16px;
+    padding: 14px 18px;
     border-radius: 12px;
     border:1px solid rgba(255,183,3,.55);
     background: linear-gradient(90deg, rgba(255,183,3,.96), rgba(255,45,85,.75));
@@ -149,49 +180,22 @@
     font-weight:1000;
     letter-spacing:.7px;
     text-transform:uppercase;
-    box-shadow: 0 20px 40px rgba(0,0,0,.45);
+    box-shadow: 0 18px 40px rgba(0,0,0,.45);
     cursor:pointer;
+    min-width: 220px;
   }
   .btnGold:hover{filter:brightness(1.04)}
 
-  /* HEADLINE */
-  .headline{
-    padding: 26px 22px 18px;
-    text-align:center;
-    background: rgba(0,0,0,.18);
-  }
-  .headline h1{
-    margin:0;
-    font-size: clamp(28px, 4vw, 44px);
-    letter-spacing:.8px;
-    text-transform:uppercase;
-    font-weight:1000;
-  }
-  .headline h1 .accent{color:var(--hot)}
-  .headline p{
-    margin:10px auto 0;
-    max-width: 76ch;
-    color: var(--muted);
-    line-height:1.55;
-    font-size: 14px;
-  }
-
-  .ctaRow{
-    margin-top:16px;
-    display:flex;
-    justify-content:center;
-    gap:12px;
-    flex-wrap:wrap;
-  }
   .btn{
     display:inline-flex; align-items:center; justify-content:center;
-    padding: 12px 16px;
+    padding: 14px 18px;
     border-radius: 12px;
     border:1px solid rgba(255,255,255,.16);
     background: rgba(255,255,255,.06);
     font-weight:950;
     letter-spacing:.6px;
     text-transform:uppercase;
+    min-width: 220px;
   }
   .btn.primary{
     border:none;
@@ -200,14 +204,87 @@
   }
   .btn:hover{filter:brightness(1.04)}
 
+  /* HEADLINE */
+  .headline{
+    padding: 28px 22px 22px;
+    text-align:center;
+    background: rgba(0,0,0,.18);
+    border-top:1px solid rgba(255,255,255,.08);
+  }
+  .headline h1{
+    margin:0;
+    font-size: clamp(28px, 4vw, 44px);
+    letter-spacing:.8px;
+    text-transform:uppercase;
+    font-weight:1000;
+    line-height: 1.05;
+  }
+  .headline h1 .accent{color:var(--hot)}
+  .headline p{
+    margin:12px auto 0;
+    max-width: 76ch;
+    color: var(--muted);
+    line-height:1.6;
+    font-size: 14px;
+  }
+
+  /* NEW: trust strip */
+  .trust{
+    padding: 18px 22px 22px;
+    background: rgba(0,0,0,.18);
+    border-top:1px solid rgba(255,255,255,.10);
+  }
+  .trustGrid{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-top: 12px;
+  }
+  .trustCard{
+    border-radius: var(--cardRadius);
+    border:1px solid rgba(255,255,255,.14);
+    background: rgba(255,255,255,.05);
+    padding: 14px;
+    text-align:left;
+  }
+  .trustTitle{
+    margin:0;
+    font-weight:1000;
+    letter-spacing:.6px;
+    text-transform:uppercase;
+    font-size: 13px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .dot{
+    width:10px;height:10px;border-radius:50%;
+    background: linear-gradient(90deg, rgba(255,45,85,.95), rgba(0,179,255,.85));
+    box-shadow: 0 0 0 3px rgba(255,255,255,.06);
+    flex:0 0 auto;
+  }
+  .trustCard p{
+    margin:8px 0 0;
+    color:var(--muted);
+    line-height:1.55;
+    font-size:14px;
+  }
+
   /* MID */
   .mid{
     display:grid;
-    grid-template-columns: 1.15fr .85fr;
-    gap:18px;
-    padding: 22px;
+    grid-template-columns: 1.1fr .9fr;
+    gap: 22px;
+    padding: 24px 22px 26px;
     border-top:1px solid rgba(255,255,255,.10);
     background: rgba(0,0,0,.18);
+    align-items: stretch;
+  }
+  .midCopy{
+    border-radius: var(--cardRadius);
+    border:1px solid rgba(255,255,255,.14);
+    background: rgba(255,255,255,.05);
+    padding: 18px;
   }
   .midCopy h2{
     margin:0;
@@ -219,14 +296,22 @@
   .midCopy p{
     margin:10px 0 0;
     color:var(--muted);
-    line-height:1.6;
+    line-height:1.65;
     font-size:14px;
   }
+  .midCtas{
+    margin-top: 14px;
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+    justify-content:flex-start;
+  }
+
   .midImg{
-    border-radius: 16px;
+    border-radius: var(--cardRadius);
     border:1px solid rgba(255,255,255,.14);
     overflow:hidden;
-    min-height: 180px;
+    min-height: 240px;
     position:relative;
     background:#0b0b0e;
   }
@@ -240,7 +325,7 @@
   .midImg::after{
     content:"";
     position:absolute; inset:0;
-    background: linear-gradient(180deg, rgba(0,0,0,.15), rgba(0,0,0,.55));
+    background: linear-gradient(180deg, rgba(0,0,0,.12), rgba(0,0,0,.60));
     pointer-events:none;
   }
 
@@ -261,12 +346,15 @@
 
   @media (max-width: 980px){
     .mid{grid-template-columns:1fr}
-    .hero{height: 460px}
-    .heroLogoWrap{width:min(460px, 86%); top:58%}
+    .trustGrid{grid-template-columns:1fr}
+    .hero{height: 520px}
+    .btn, .btnGold{min-width: 200px}
   }
   @media (max-width: 520px){
-    .hero{height: 420px}
-    .heroLogoWrap{width:92%; top:60%}
+    .hero{height: 500px}
+    .heroCard{border-radius: 20px}
+    .heroLogoWrap{width: 86%}
+    .btn, .btnGold{width: 100%}
   }
 
   /* ===== MOBILE TOPBAR FIX (improved email wrapping) ===== */
@@ -282,8 +370,8 @@
       width: 100%;
       justify-content: center;
       font-size: 13px;
-      white-space: normal;      /* allow wrapping */
-      overflow-wrap: anywhere;  /* never clip last char */
+      white-space: normal;
+      overflow-wrap: anywhere;
       text-align:center;
       line-height:1.2;
     }
@@ -336,17 +424,28 @@
   <main class="container">
     <section class="panel">
 
-      <!-- HERO IMAGE (landing only) -->
+      <!-- HERO -->
       <div class="hero">
-        
+        <!-- Optional: add a hero background image by uncommenting next line and changing src
+        <img class="heroPhoto" src="hero.jpg" alt="Streetwear hero background" />
+        -->
         <div class="heroShade" aria-hidden="true"></div>
 
-        <div class="heroLogoWrap">
-          <img class="heroLogo" src="logo.png" alt="I Shirt You Not logo" />
-        </div>
+        <div class="heroInner">
+          <div class="heroCard">
+            <div class="heroLogoWrap">
+              <img class="heroLogo" src="logo.png" alt="I Shirt You Not logo" />
+            </div>
 
-        <div class="heroCta">
-          <a class="btnGold" href="contact.html">GET A QUOTE</a>
+            <p class="heroKicker">
+              Bold prints. Clean edges. Fast turnaround. You bring the idea — we make it look expensive on purpose.
+            </p>
+
+            <div class="heroButtons">
+              <a class="btnGold" href="contact.html">GET A QUOTE</a>
+              <a class="btn primary" href="products.html">SHOP PRODUCTS</a>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -356,9 +455,23 @@
         <p>
           Loud designs. Clean prints. Real quality. Tell us what you want and we’ll make it look dope af.
         </p>
-        <div class="ctaRow">
-          <a class="btn primary" href="products.html">SHOP PRODUCTS</a>
-          <a class="btn" href="contact.html">GET A QUOTE</a>
+      </div>
+
+      <!-- TRUST STRIP -->
+      <div class="trust">
+        <div class="trustGrid">
+          <div class="trustCard">
+            <p class="trustTitle"><span class="dot"></span> Fast Quotes</p>
+            <p>Send qty, sizes, colors, and deadline. We’ll reply straight with pricing + timeline.</p>
+          </div>
+          <div class="trustCard">
+            <p class="trustTitle"><span class="dot"></span> Clean Printing</p>
+            <p>Sharp edges, solid ink, and alignment checks — so your shirts look premium.</p>
+          </div>
+          <div class="trustCard">
+            <p class="trustTitle"><span class="dot"></span> Streetwear Fit</p>
+            <p>Tees, hoodies, crewnecks — printed to match your vibe, not mass-produced boring.</p>
+          </div>
         </div>
       </div>
 
@@ -370,8 +483,10 @@
             Welcome to the most exclusive custom T-shirt shop on the web. We specialize in custom tees and hoodies that match your personality.
             Bold, unique, and printed clean so you stand out in any crowd.
           </p>
-          <div class="ctaRow" style="justify-content:flex-start; margin-top:14px">
+
+          <div class="midCtas">
             <a class="btn primary" href="products.html">SHOP NOW</a>
+            <a class="btn" href="contact.html">GET A QUOTE</a>
           </div>
         </div>
 
@@ -380,10 +495,10 @@
         </div>
       </div>
 
-      <!-- FOOTER (no contact section on landing) -->
+      <!-- FOOTER -->
       <footer>
         <div class="legal">© <span id="year"></span> I Shirt You Not. All rights reserved.</div>
-        <div class="legal">Email: <a href="mailto:ishirtyounot@gmail.com"><b>ishirtyounot@gmail.com</b></a></div>
+        <div class="legal">Email: <a href="mailto:ishirtyounotbydawn@gmail.com"><b>ishirtyounotbydawn@gmail.com</b></a></div>
       </footer>
 
     </section>
