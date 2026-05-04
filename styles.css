@@ -359,3 +359,27 @@ body{
 .container, main, header, section, .card, .heroCard, .hero, .section {
   background: transparent;
 }
+.neon-sign {
+  font-family: monospace;
+  font-size: 16px;
+  white-space: pre;
+  color: #ff4d00;
+  text-shadow:
+    0 0 5px #ff4d00,
+    0 0 10px #ff4d00,
+    0 0 20px #ff4d00,
+    0 0 40px #ff4d00,
+    0 0 80px #ff4d00;
+}
+@keyframes flicker {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+    opacity: 1;
+  }
+  20%, 24%, 55% {
+    opacity: 0.4;
+  }
+}
+
+.neon-sign {
+  animation: flicker 2.5s infinite;
+}
