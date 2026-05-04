@@ -3,29 +3,44 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>I Shirt You Not — Custom Tee’s With Attitude</title>
+<title>I Shirt You Not — Custom Tees With Attitude</title>
 <meta name="description" content="Custom tees and hoodies with attitude. Bold prints. Fast turnaround. Real quality." />
 <meta name="robots" content="index,follow,max-image-preview:large" />
 <link rel="icon" href="logo.png" />
 
 <style>
   :root{
-    --ink:#fff;
+    --bg:#060609;
+    --bg2:#000000;
+
+    --ink:rgba(255,255,255,.94);
     --muted:rgba(255,255,255,.72);
-    --line:rgba(255,255,255,.14);
+    --muted2:rgba(255,255,255,.60);
 
     --hot:#ff2d55;
     --ice:#00b3ff;
     --gold:#ffb703;
 
-    --max:1120px;
-    --shadow: 0 28px 90px rgba(0,0,0,.65);
+    --max:1160px;
 
-    /* polish tokens */
-    --radius: 22px;
-    --cardRadius: 18px;
-    --pad: 22px;
-    --gap: 18px;
+    --line: rgba(255,255,255,.10);
+    --line2: rgba(255,255,255,.14);
+
+    --glass: rgba(255,255,255,.05);
+    --glass2: rgba(255,255,255,.07);
+
+    --shadow: 0 30px 120px rgba(0,0,0,.72);
+    --shadow2: 0 18px 50px rgba(0,0,0,.58);
+    --shadow3: 0 10px 26px rgba(0,0,0,.45);
+
+    --r-xl: 28px;
+    --r-lg: 22px;
+    --r-md: 18px;
+
+    --ease: cubic-bezier(.2,.8,.2,1);
+
+    /* mobile comfort */
+    --tap: 44px;
   }
 
   *{box-sizing:border-box}
@@ -34,367 +49,612 @@
     margin:0;
     font-family: system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
     color:var(--ink);
-    background:
-      radial-gradient(900px 520px at 18% 20%, rgba(255,45,85,.16), transparent 62%),
-      radial-gradient(820px 520px at 82% 30%, rgba(0,179,255,.14), transparent 62%),
-      radial-gradient(520px 380px at 64% 78%, rgba(255,183,3,.10), transparent 66%),
-      linear-gradient(180deg, #030304 0%, #0b0b0e 55%, #030304 100%);
+    background: radial-gradient(1200px 720px at 16% 18%, rgba(255,45,85,.14), transparent 62%),
+                radial-gradient(980px 680px at 86% 22%, rgba(0,179,255,.12), transparent 62%),
+                radial-gradient(820px 580px at 58% 84%, rgba(255,183,3,.08), transparent 66%),
+                linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%);
     overflow-x:hidden;
   }
+
   a{color:inherit;text-decoration:none}
   img{display:block;max-width:100%}
 
-  .container{max-width:var(--max); margin:0 auto; padding:0 18px}
+  .container{max-width:var(--max); margin:0 auto; padding:0 22px}
 
-  /* gritty grain */
+  /* ===== ambient grain ===== */
   .grain{
     position:fixed; inset:-40%;
-    pointer-events:none; z-index:-1;
-    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)' opacity='.12'/%3E%3C/svg%3E");
-    transform: rotate(8deg);
+    pointer-events:none; z-index:-2;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)' opacity='.10'/%3E%3C/svg%3E");
+    transform: rotate(10deg);
     mix-blend-mode: overlay;
-    opacity:.85;
+    opacity:.50;
   }
 
-  /* top bar */
+  /* ===== fancy header bar ===== */
   .topbar{
     position:sticky; top:0; z-index:1000;
-    backdrop-filter: blur(14px);
-    background: rgba(0,0,0,.46);
-    border-bottom:1px solid var(--line);
+    backdrop-filter: blur(18px);
+    background: linear-gradient(180deg, rgba(10,10,14,.78), rgba(0,0,0,.50));
+    border-bottom: 1px solid rgba(255,255,255,.10);
+    box-shadow: 0 14px 40px rgba(0,0,0,.40);
   }
+  .topbar::after{
+    content:"";
+    position:absolute;
+    left:0; right:0; bottom:-1px;
+    height:2px;
+    background: linear-gradient(90deg,
+      transparent,
+      rgba(255,45,85,.55),
+      rgba(0,179,255,.55),
+      transparent);
+    opacity:.55;
+    pointer-events:none;
+  }
+
   .topbarRow{
-    display:flex; align-items:center; justify-content:space-between;
-    gap:14px; padding:12px 0;
-  }
-  .email{
-    display:flex; align-items:center; gap:10px;
-    font-size:14px; color:var(--muted); white-space:nowrap;
-  }
-  .email svg{opacity:.9}
-  .nav{
-    display:flex; align-items:center; gap:18px;
-    font-size:14px; font-weight:900; letter-spacing:.2px;
-  }
-  .nav a{
-    padding:8px 12px;
-    border-radius:999px;
-    border:1px solid transparent;
-    opacity:.95;
-  }
-  .nav a:hover{
-    border-color:rgba(255,255,255,.16);
-    background:rgba(255,255,255,.06);
-  }
-  .nav a.active{
-    border-color:rgba(255,255,255,.22);
-    background:rgba(255,255,255,.08);
-  }
-
-  /* panel */
-  main{padding:22px 0 28px}
-  .panel{
-    border-radius: var(--radius);
-    border:1px solid rgba(255,255,255,.14);
-    background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.02));
-    box-shadow: var(--shadow);
-    overflow:hidden;
-  }
-
-  /* HERO */
-  .hero{
-    position:relative;
-    height: 560px;
-    border-bottom:1px solid rgba(255,255,255,.10);
-    overflow:hidden;
-    background:#0b0b0e;
-  }
-  /* if you later add a hero background image, drop it in here */
-  .heroPhoto{
-    position:absolute; inset:0;
-    width:100%; height:100%;
-    object-fit:cover;
-    object-position:center;
-    transform: translateZ(0) scale(1.02);
-    filter: saturate(1.02) contrast(1.04);
-  }
-  .heroShade{
-    position:absolute; inset:0;
-    background:
-      radial-gradient(900px 520px at 20% 20%, rgba(255,45,85,.18), transparent 62%),
-      radial-gradient(820px 520px at 82% 30%, rgba(0,179,255,.14), transparent 62%),
-      radial-gradient(520px 380px at 64% 78%, rgba(255,183,3,.10), transparent 66%),
-      linear-gradient(180deg, rgba(0,0,0,.18), rgba(0,0,0,.78));
-    pointer-events:none;
-  }
-
-  /* NEW: centered hero content container */
-  .heroInner{
-    position:absolute; inset:0;
-    display:grid;
-    place-items:center;
-    padding: 28px 18px;
-  }
-  .heroCard{
-    width: min(860px, 100%);
-    border-radius: 24px;
-    border:1px solid rgba(255,255,255,.14);
-    background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
-    box-shadow: 0 30px 90px rgba(0,0,0,.55);
-    padding: clamp(18px, 3vw, 28px);
-    backdrop-filter: blur(10px);
-    text-align:center;
-  }
-
-  .heroLogoWrap{
-    width: min(440px, 78%);
-    margin: 0 auto 14px;
-    filter: drop-shadow(0 18px 26px rgba(0,0,0,.65));
-    pointer-events:none;
-  }
-  .heroLogo{width:100%; height:auto;}
-
-  .heroKicker{
-    margin: 0 auto;
-    max-width: 78ch;
-    color: rgba(255,255,255,.82);
-    font-size: 14px;
-    line-height: 1.6;
-  }
-
-  .heroButtons{
-    margin-top: 16px;
     display:flex;
-    justify-content:center;
-    gap:12px;
-    flex-wrap:wrap;
+    align-items:center;
+    justify-content:space-between;
+    gap:16px;
+    padding:14px 0;
   }
 
-  .btnGold{
-    display:inline-flex; align-items:center; justify-content:center;
-    padding: 14px 18px;
-    border-radius: 12px;
-    border:1px solid rgba(255,183,3,.55);
-    background: linear-gradient(90deg, rgba(255,183,3,.96), rgba(255,45,85,.75));
-    color:#130a00;
-    font-weight:1000;
-    letter-spacing:.7px;
-    text-transform:uppercase;
-    box-shadow: 0 18px 40px rgba(0,0,0,.45);
-    cursor:pointer;
-    min-width: 220px;
-  }
-  .btnGold:hover{filter:brightness(1.04)}
-
-  .btn{
-    display:inline-flex; align-items:center; justify-content:center;
-    padding: 14px 18px;
-    border-radius: 12px;
-    border:1px solid rgba(255,255,255,.16);
-    background: rgba(255,255,255,.06);
-    font-weight:950;
-    letter-spacing:.6px;
-    text-transform:uppercase;
-    min-width: 220px;
-  }
-  .btn.primary{
-    border:none;
-    color:#0b0b0e;
-    background: linear-gradient(90deg, rgba(255,45,85,.92), rgba(0,179,255,.76));
-  }
-  .btn:hover{filter:brightness(1.04)}
-
-  /* HEADLINE */
-  .headline{
-    padding: 28px 22px 22px;
-    text-align:center;
-    background: rgba(0,0,0,.18);
-    border-top:1px solid rgba(255,255,255,.08);
-  }
-  .headline h1{
-    margin:0;
-    font-size: clamp(28px, 4vw, 44px);
-    letter-spacing:.8px;
-    text-transform:uppercase;
-    font-weight:1000;
-    line-height: 1.05;
-  }
-  .headline h1 .accent{color:var(--hot)}
-  .headline p{
-    margin:12px auto 0;
-    max-width: 76ch;
-    color: var(--muted);
-    line-height:1.6;
-    font-size: 14px;
-  }
-
-  /* NEW: trust strip */
-  .trust{
-    padding: 18px 22px 22px;
-    background: rgba(0,0,0,.18);
-    border-top:1px solid rgba(255,255,255,.10);
-  }
-  .trustGrid{
-    display:grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 14px;
-    margin-top: 12px;
-  }
-  .trustCard{
-    border-radius: var(--cardRadius);
-    border:1px solid rgba(255,255,255,.14);
-    background: rgba(255,255,255,.05);
-    padding: 14px;
-    text-align:left;
-  }
-  .trustTitle{
-    margin:0;
-    font-weight:1000;
-    letter-spacing:.6px;
-    text-transform:uppercase;
-    font-size: 13px;
+  .brandMini{
     display:flex;
     align-items:center;
     gap:10px;
+    min-width: 220px;
   }
-  .dot{
-    width:10px;height:10px;border-radius:50%;
-    background: linear-gradient(90deg, rgba(255,45,85,.95), rgba(0,179,255,.85));
-    box-shadow: 0 0 0 3px rgba(255,255,255,.06);
-    flex:0 0 auto;
+  .brandMini img{
+    width:34px; height:34px;
+    border-radius:10px;
+    box-shadow: 0 14px 28px rgba(0,0,0,.55);
   }
-  .trustCard p{
-    margin:8px 0 0;
-    color:var(--muted);
-    line-height:1.55;
-    font-size:14px;
-  }
-
-  /* MID */
-  .mid{
-    display:grid;
-    grid-template-columns: 1.1fr .9fr;
-    gap: 22px;
-    padding: 24px 22px 26px;
-    border-top:1px solid rgba(255,255,255,.10);
-    background: rgba(0,0,0,.18);
-    align-items: stretch;
-  }
-  .midCopy{
-    border-radius: var(--cardRadius);
-    border:1px solid rgba(255,255,255,.14);
-    background: rgba(255,255,255,.05);
-    padding: 18px;
-  }
-  .midCopy h2{
-    margin:0;
-    font-size: 18px;
-    letter-spacing:.6px;
+  .brandMini strong{
+    font-size:13px;
+    letter-spacing:.22em;
     text-transform:uppercase;
-    font-weight:1000;
+    font-weight:950;
+    color: rgba(255,255,255,.86);
+    line-height:1.0;
   }
-  .midCopy p{
-    margin:10px 0 0;
-    color:var(--muted);
-    line-height:1.65;
-    font-size:14px;
-  }
-  .midCtas{
-    margin-top: 14px;
-    display:flex;
-    gap:12px;
-    flex-wrap:wrap;
-    justify-content:flex-start;
+  .brandMini span{
+    display:block;
+    margin-top:2px;
+    font-size:12px;
+    color: rgba(255,255,255,.58);
+    letter-spacing:.04em;
+    white-space:nowrap;
   }
 
-  .midImg{
-    border-radius: var(--cardRadius);
-    border:1px solid rgba(255,255,255,.14);
-    overflow:hidden;
-    min-height: 240px;
-    position:relative;
-    background:#0b0b0e;
+  .email{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    font-size:13px;
+    color: rgba(255,255,255,.72);
+    white-space:nowrap;
+    letter-spacing:.18px;
+    flex: 1;
   }
-  .midImg img{
+  .email svg{opacity:.9}
+  .email a{
+    position:relative;
+    padding-bottom:2px;
+  }
+  .email a::after{
+    content:"";
+    position:absolute;
+    left:0; right:0; bottom:-2px;
+    height:1px;
+    background: linear-gradient(90deg, rgba(255,45,85,.0), rgba(255,45,85,.55), rgba(0,179,255,.55), rgba(0,179,255,.0));
+    opacity:.60;
+    transform: scaleX(.25);
+    transform-origin:center;
+    transition: transform .18s var(--ease), opacity .18s var(--ease);
+  }
+  .email a:hover{opacity:1}
+  .email a:hover::after{ transform: scaleX(1); opacity:.95; }
+
+  .nav{
+    display:flex;
+    align-items:center;
+    justify-content:flex-end;
+    gap:10px;
+    min-width: 260px;
+  }
+  .nav a{
+    position:relative;
+    padding:9px 14px;
+    border-radius:999px;
+    border:1px solid rgba(255,255,255,.12);
+    background: rgba(255,255,255,.04);
+    font-size:14px;
+    font-weight:950;
+    letter-spacing:.2px;
+    opacity:.95;
+    transition: transform .12s var(--ease), background .12s var(--ease), border-color .12s var(--ease), box-shadow .12s var(--ease);
+    min-height: var(--tap);
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .nav a:hover{
+    border-color:rgba(255,255,255,.24);
+    background:rgba(255,255,255,.08);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow3);
+  }
+  .nav a.active{
+    border-color:rgba(255,255,255,.28);
+    background: linear-gradient(90deg, rgba(255,45,85,.18), rgba(0,179,255,.14));
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,.06);
+  }
+
+  main{padding: 22px 0 58px}
+
+  /* ===== hero ===== */
+  .hero{
+    position:relative;
+    border-radius: var(--r-xl);
+    overflow:hidden;
+    border:1px solid rgba(255,255,255,.10);
+    box-shadow: var(--shadow);
+    background:#000;
+  }
+
+  .heroBg{
+    position:absolute; inset:0;
     width:100%; height:100%;
     object-fit:cover;
     object-position:center;
-    filter: saturate(1.02) contrast(1.03);
     transform: scale(1.02);
   }
-  .midImg::after{
-    content:"";
+
+  .heroShade{
     position:absolute; inset:0;
-    background: linear-gradient(180deg, rgba(0,0,0,.12), rgba(0,0,0,.60));
+    background:
+      radial-gradient(900px 520px at 18% 20%, rgba(255,45,85,.22), transparent 62%),
+      radial-gradient(820px 520px at 82% 26%, rgba(0,179,255,.16), transparent 62%),
+      radial-gradient(900px 520px at 50% 10%, rgba(255,255,255,.10), transparent 62%),
+      linear-gradient(180deg, rgba(0,0,0,.48) 0%, rgba(0,0,0,.78) 55%, rgba(0,0,0,.92) 100%);
     pointer-events:none;
   }
 
-  /* SIMPLE FOOTER */
+  .heroInner{
+    position:relative;
+    z-index:2;
+    /* desktop baseline */
+    min-height: 760px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:flex-start;
+    text-align:center;
+    gap: 12px;
+    padding: 42px 26px 34px;
+  }
+
+  .kicker{
+    display:inline-flex;
+    align-items:center;
+    gap: 10px;
+    padding: 9px 14px;
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,.14);
+    background: rgba(0,0,0,.36);
+    color: rgba(255,255,255,.84);
+    font-size: 12px;
+    letter-spacing: .20em;
+    text-transform: uppercase;
+    font-weight: 950;
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,.04);
+  }
+  .kdot{
+    width:10px;height:10px;border-radius:999px;
+    background: linear-gradient(180deg, var(--hot), var(--ice));
+    box-shadow: 0 0 18px rgba(255,45,85,.25);
+  }
+
+  .brand{
+    margin: 10px 0 2px;
+    display:flex;
+    justify-content:center;
+  }
+  .logo{
+    width: 420px;
+    max-width: 86vw;
+    height:auto;
+    filter: drop-shadow(0 22px 44px rgba(0,0,0,.75));
+  }
+
+  h1{
+    margin: 8px 0 6px;
+    font-size: clamp(34px, 4.9vw, 66px);
+    line-height: 1.02;
+    letter-spacing: -0.9px;
+    text-transform: uppercase;
+    font-weight: 1000;
+    text-shadow: 0 16px 46px rgba(0,0,0,.70);
+  }
+  .accent{
+    background: linear-gradient(90deg, var(--hot), var(--ice));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .sub{
+    margin: 0;
+    max-width: 64ch;
+    color: rgba(255,255,255,.80);
+    line-height: 1.65;
+    font-size: 15px;
+    text-shadow: 0 12px 34px rgba(0,0,0,.60);
+  }
+
+  .ctaRow{
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+    justify-content:center;
+    margin-top: 12px;
+    width: 100%;
+  }
+
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center;
+    padding: 14px 20px;
+    border-radius: 999px;
+    border:1px solid rgba(255,255,255,.16);
+    background: rgba(0,0,0,.35);
+    font-weight: 1000;
+    letter-spacing: .10em;
+    text-transform: uppercase;
+    line-height: 1;
+    user-select:none;
+    transition: transform .14s var(--ease), filter .14s var(--ease), box-shadow .14s var(--ease);
+    min-height: var(--tap);
+  }
+  .btn:hover{
+    filter:brightness(1.06);
+    transform: translateY(-1px);
+    box-shadow: 0 18px 44px rgba(0,0,0,.50);
+  }
+  .btn:active{transform: translateY(0px) scale(.99)}
+  .btn.gold{
+    border:1px solid rgba(255,183,3,.55);
+    color:#120a00;
+    background: linear-gradient(90deg, rgba(255,183,3,.96), rgba(255,45,85,.72));
+  }
+
+  /* ===== section system ===== */
+  .section{
+    margin-top: 18px;
+    border-radius: var(--r-lg);
+    border: 1px solid rgba(255,255,255,.10);
+    background: linear-gradient(180deg, rgba(255,255,255,.035), rgba(255,255,255,.02));
+    overflow:hidden;
+    box-shadow: var(--shadow2);
+  }
+
+  .sectionHeader{padding: 24px 22px 12px}
+
+  .sectionKicker{
+    font-size: 12px;
+    letter-spacing: .20em;
+    text-transform: uppercase;
+    font-weight: 950;
+    color: rgba(255,255,255,.72);
+    margin: 0 0 8px;
+    display:flex; align-items:center; justify-content:center; gap:10px;
+  }
+  .sectionKicker .kdot{width:9px;height:9px}
+
+  .sectionHeader h2{
+    margin: 0 0 8px;
+    font-size: 22px;
+    text-transform: uppercase;
+    font-weight: 1000;
+    text-align:center;
+    letter-spacing:.04em;
+  }
+  .sectionHeader p{
+    margin: 0 auto;
+    color: rgba(255,255,255,.68);
+    line-height: 1.7;
+    font-size: 14px;
+    max-width: 78ch;
+    text-align:center;
+  }
+
+  .grid3{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    padding: 14px 22px 24px;
+  }
+
+  .mini{
+    border-radius: var(--r-md);
+    border: 1px solid rgba(255,255,255,.10);
+    background: rgba(0,0,0,.26);
+    padding: 18px 16px;
+    box-shadow: 0 18px 40px rgba(0,0,0,.35);
+    transition: transform .14s var(--ease), border-color .14s var(--ease), background .14s var(--ease);
+  }
+  .mini:hover{
+    transform: translateY(-2px);
+    border-color: rgba(255,255,255,.18);
+    background: rgba(0,0,0,.32);
+  }
+  .mini strong{
+    display:block;
+    margin-bottom: 8px;
+    font-size: 15px;
+    font-weight: 1000;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+  }
+  .mini span{
+    display:block;
+    color: rgba(255,255,255,.70);
+    line-height: 1.7;
+    font-size: 14px;
+  }
+
+  /* ===== about rack section ===== */
+  .rack{
+    display:grid;
+    grid-template-columns: 1.05fr .95fr;
+    gap: 16px;
+    padding: 22px;
+    border-top: 1px solid rgba(255,255,255,.08);
+    background: rgba(0,0,0,.18);
+  }
+  .rackCopy h3{
+    margin:0;
+    font-size: 18px;
+    letter-spacing:.08em;
+    text-transform: uppercase;
+    font-weight:1000;
+  }
+  .rackCopy p{
+    margin:12px 0 0;
+    color: rgba(255,255,255,.70);
+    line-height:1.75;
+    font-size:14px;
+    max-width: 62ch;
+  }
+  .rackImg{
+    border-radius: var(--r-md);
+    border: 1px solid rgba(255,255,255,.12);
+    overflow:hidden;
+    min-height: 240px;
+    position:relative;
+    background:#050507;
+    box-shadow: 0 22px 55px rgba(0,0,0,.55);
+  }
+  .rackImg img{
+    width:100%; height:100%;
+    object-fit:cover;
+    object-position:center;
+    filter: saturate(1.05) contrast(1.05);
+    transform: scale(1.03);
+  }
+  .rackImg::after{
+    content:"";
+    position:absolute; inset:0;
+    background: linear-gradient(180deg, rgba(0,0,0,.10), rgba(0,0,0,.62));
+    pointer-events:none;
+  }
+
+  /* ===== footer ===== */
   footer{
-    padding: 16px 22px 18px;
-    border-top:1px solid rgba(255,255,255,.10);
-    background: rgba(0,0,0,.22);
+    margin-top: 18px;
+    border-radius: var(--r-lg);
+    border: 1px solid rgba(255,255,255,.10);
+    background: rgba(255,255,255,.02);
+    padding: 16px 18px;
     display:flex;
     justify-content:space-between;
     flex-wrap:wrap;
     gap:10px;
+    box-shadow: 0 16px 40px rgba(0,0,0,.35);
   }
-  .legal{
-    color: rgba(255,255,255,.70);
-    font-size:12px;
-  }
+  .legal{color: rgba(255,255,255,.62); font-size:12px}
+  .legal b{color: rgba(255,255,255,.90)}
 
+  /* ===== responsive ===== */
   @media (max-width: 980px){
-    .mid{grid-template-columns:1fr}
-    .trustGrid{grid-template-columns:1fr}
-    .hero{height: 520px}
-    .btn, .btnGold{min-width: 200px}
-  }
-  @media (max-width: 520px){
-    .hero{height: 500px}
-    .heroCard{border-radius: 20px}
-    .heroLogoWrap{width: 86%}
-    .btn, .btnGold{width: 100%}
+    .heroInner{min-height: 680px; padding: 34px 18px 28px}
+    .grid3{grid-template-columns:1fr}
+    .rack{grid-template-columns:1fr}
+    .brandMini{display:none;}
+    .nav{min-width:auto;}
   }
 
-  /* ===== MOBILE TOPBAR FIX (improved email wrapping) ===== */
   @media (max-width: 640px){
+    .container{padding: 0 16px}
+
     .topbarRow{
-      flex-wrap: wrap;
-      justify-content: center;
+      flex-direction: column;
+      align-items: stretch;
       gap: 10px;
-      padding: 10px 0;
+      padding: 12px 0;
     }
 
     .email{
-      width: 100%;
-      justify-content: center;
-      font-size: 13px;
-      white-space: normal;
-      overflow-wrap: anywhere;
+      justify-content:center;
       text-align:center;
+      white-space: normal;
+      overflow-wrap:anywhere;
       line-height:1.2;
     }
 
-    .email a{
-      display:inline-block;
-      max-width: 100%;
-    }
-
     .nav{
-      width: 100%;
-      justify-content: center;
-      gap: 10px;
+      width:100%;
+      justify-content:center;
+      gap:10px;
     }
-
     .nav a{
       flex: 1;
-      text-align: center;
+      text-align:center;
       padding: 10px 10px;
       border-radius: 14px;
       font-size: 13px;
     }
+
+    /* Mobile hero: stop being insanely tall */
+    .heroInner{
+      /* modern mobile-safe viewport */
+      min-height: min(72svh, 560px);
+      padding: 22px 14px 18px;
+      gap: 10px;
+    }
+
+    /* Keep the rack image centered on phones */
+    .heroBg{ object-position: 50% 45%; }
+
+    /* Make the kicker wrap nicely */
+    .kicker{
+      padding: 8px 12px;
+      font-size: 11px;
+      letter-spacing: .16em;
+      text-align:center;
+      line-height:1.25;
+      flex-wrap: wrap;
+      justify-content:center;
+    }
+
+    /* Logo + type scale down so it doesn't eat the screen */
+    .logo{
+      width: min(320px, 84vw);
+      filter: drop-shadow(0 18px 34px rgba(0,0,0,.70));
+    }
+
+    h1{
+      font-size: clamp(26px, 7.2vw, 40px);
+      letter-spacing: -0.5px;
+      margin: 6px 0 4px;
+    }
+
+    .sub{
+      font-size: 14px;
+      line-height: 1.6;
+      max-width: 42ch;
+    }
+
+    /* Button becomes full width on mobile */
+    .ctaRow{ margin-top: 10px; }
+    .btn{
+      width: 100%;
+      max-width: 420px;
+      padding: 14px 18px;
+    }
+
+    main{padding: 16px 0 46px}
+
+    .sectionHeader{padding: 18px 16px 10px}
+    .grid3{padding: 12px 16px 16px}
+    .rack{padding: 16px}
+    footer{padding: 14px 14px}
   }
+
+  @media (max-width: 520px){
+    .hero{border-radius: 22px}
+    .heroInner{ min-height: min(70svh, 520px); }
+  }
+  /* ========= MOBILE BIG MODE (HOME) ========= */
+@media (max-width: 640px){
+  body{ font-size: 17px; } /* global scale-up */
+
+  .container{ padding: 0 16px; }
+
+  /* topbar */
+  .topbarRow{ gap: 12px; padding: 12px 0; }
+  .email{ font-size: 14px; }
+  .nav{ gap: 10px; }
+  .nav a{
+    min-height: 52px;
+    font-size: 15px;
+    padding: 12px 12px;
+    border-radius: 16px;
+  }
+
+  /* hero spacing */
+  .heroInner{
+    min-height: auto;
+    padding: 34px 16px 26px;
+    gap: 14px;
+  }
+
+  .kicker{
+    font-size: 12px;
+    padding: 10px 14px;
+    letter-spacing: .16em;
+    flex-wrap: wrap;
+    text-align: center;
+  }
+
+  /* main headline + subhead */
+  h1{
+    font-size: clamp(34px, 9.2vw, 48px);
+    letter-spacing: -0.6px;
+    line-height: 1.03;
+    margin: 6px 0 6px;
+  }
+  .sub{
+    font-size: 16px;
+    line-height: 1.72;
+    max-width: 42ch;
+  }
+
+  /* CTA bigger */
+  .btn{
+    min-height: 54px;
+    font-size: 15px;
+    padding: 16px 18px;
+    width: 100%;
+    max-width: 420px;
+  }
+
+  /* section */
+  .sectionHeader{ padding: 20px 16px 10px; }
+  .sectionHeader h2{ font-size: 20px; }
+  .sectionHeader p{ font-size: 15px; line-height: 1.7; }
+
+  .grid3{
+    padding: 12px 16px 18px;
+    gap: 12px;
+  }
+  .mini{
+    padding: 18px 16px;
+  }
+  .mini strong{ font-size: 16px; }
+  .mini span{ font-size: 15px; line-height: 1.7; }
+
+  /* about rack */
+  .rack{ padding: 16px; gap: 12px; }
+  .rackCopy h3{ font-size: 18px; }
+  .rackCopy p{ font-size: 15px; line-height: 1.75; }
+
+  footer{
+    padding: 14px 14px;
+  }
+  .legal{ font-size: 13px; width: 100%; text-align:center; }
+}
+
+@media (max-width: 420px){
+  body{ font-size: 18px; } /* tiny phones need more help */
+  h1{ font-size: clamp(32px, 10vw, 44px); }
+  .sub{ font-size: 16px; }
+  .nav a{ font-size: 14px; min-height: 50px; }
+}
+
 </style>
 </head>
 
@@ -404,12 +664,20 @@
   <div class="topbar">
     <div class="container">
       <div class="topbarRow">
-        <div class="email">
+        <a class="brandMini" href="index.html" aria-label="I Shirt You Not home">
+          <img src="logo.png" alt="" aria-hidden="true" />
+          <div>
+            <strong>I Shirt You Not</strong>
+            <span>Custom prints • fast turnaround</span>
+          </div>
+        </a>
+
+        <div class="email" aria-label="Email">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
             <path d="M4 6h16v12H4V6Z" stroke="currentColor" stroke-width="2"/>
             <path d="m4 7 8 6 8-6" stroke="currentColor" stroke-width="2"/>
           </svg>
-          <a href="mailto:ishirtyounotbydawn@gmail.com">ishirtyounotbydawn@gmail.com</a>
+          <a href="mailto:ishirtyounot@gmail.com">ishirtyounotbydawn@gmail.com</a>
         </div>
 
         <nav class="nav" aria-label="Primary">
@@ -422,90 +690,78 @@
   </div>
 
   <main class="container">
-    <section class="panel">
+    <section class="hero" aria-label="Hero Poster">
+      <img class="heroBg" src="rack.jpg" alt="" aria-hidden="true" />
+      <div class="heroShade" aria-hidden="true"></div>
 
-      <!-- HERO -->
-      <div class="hero">
-        <!-- Optional: add a hero background image by uncommenting next line and changing src
-        <img class="heroPhoto" src="hero.jpg" alt="Streetwear hero background" />
-        -->
-        <div class="heroShade" aria-hidden="true"></div>
+      <div class="heroInner">
+        <div class="kicker"><span class="kdot"></span> CUSTOM PRINTS • CLEAN LOOK • FAST TURNAROUND</div>
 
-        <div class="heroInner">
-          <div class="heroCard">
-            <div class="heroLogoWrap">
-              <img class="heroLogo" src="logo.png" alt="I Shirt You Not logo" />
-            </div>
-
-            <p class="heroKicker">
-              Bold prints. Clean edges. Fast turnaround. You bring the idea — we make it look expensive on purpose.
-            </p>
-
-            <div class="heroButtons">
-              <a class="btnGold" href="contact.html">GET A QUOTE</a>
-              <a class="btn primary" href="products.html">SHOP PRODUCTS</a>
-            </div>
-          </div>
+        <div class="brand" aria-label="Brand">
+          <img class="logo" src="logo.png" alt="I Shirt You Not logo" />
         </div>
-      </div>
 
-      <!-- HEADLINE -->
-      <div class="headline">
-        <h1>CUSTOM TEES AND HOODIES<br><span class="accent">WITH ATTITUDE!</span></h1>
-        <p>
-          Loud designs. Clean prints. Real quality. Tell us what you want and we’ll make it look dope af.
+        <h1>
+          Custom Tees & Hoodies<br />
+          <span class="accent">With Attitude</span>
+        </h1>
+
+        <p class="sub">
+          Loud designs. Clean prints. Real quality. Tell us what you want and we’ll make it look dope — without looking cheap.
         </p>
-      </div>
 
-      <!-- TRUST STRIP -->
-      <div class="trust">
-        <div class="trustGrid">
-          <div class="trustCard">
-            <p class="trustTitle"><span class="dot"></span> Fast Quotes</p>
-            <p>Send qty, sizes, colors, and deadline. We’ll reply straight with pricing + timeline.</p>
-          </div>
-          <div class="trustCard">
-            <p class="trustTitle"><span class="dot"></span> Clean Printing</p>
-            <p>Sharp edges, solid ink, and alignment checks — so your shirts look premium.</p>
-          </div>
-          <div class="trustCard">
-            <p class="trustTitle"><span class="dot"></span> Streetwear Fit</p>
-            <p>Tees, hoodies, crewnecks — printed to match your vibe, not mass-produced boring.</p>
-          </div>
+        <div class="ctaRow">
+          <a class="btn gold" href="contact.html">Get a Quote</a>
         </div>
       </div>
-
-      <!-- MID SECTION -->
-      <div class="mid">
-        <div class="midCopy">
-          <h2>Your attitude. Your style. Your tee.</h2>
-          <p>
-            Welcome to the most exclusive custom T-shirt shop on the web. We specialize in custom tees and hoodies that match your personality.
-            Bold, unique, and printed clean so you stand out in any crowd.
-          </p>
-
-          <div class="midCtas">
-            <a class="btn primary" href="products.html">SHOP NOW</a>
-            <a class="btn" href="contact.html">GET A QUOTE</a>
-          </div>
-        </div>
-
-        <div class="midImg" aria-label="Clothing rack image">
-          <img src="rack.jpg" alt="Clothing rack" />
-        </div>
-      </div>
-
-      <!-- FOOTER -->
-      <footer>
-        <div class="legal">© <span id="year"></span> I Shirt You Not. All rights reserved.</div>
-        <div class="legal">Email: <a href="mailto:ishirtyounotbydawn@gmail.com"><b>ishirtyounotbydawn@gmail.com</b></a></div>
-      </footer>
-
     </section>
+
+    <section class="section" aria-label="How it works">
+      <div class="sectionHeader">
+        <div class="sectionKicker"><span class="kdot"></span> SIMPLE PROCESS</div>
+        <h2>How it works</h2>
+        <p>Pick what you want, send the idea, approve the proof, and we print it clean.</p>
+      </div>
+
+      <div class="grid3">
+        <div class="mini">
+          <strong>1) Choose</strong>
+          <span>Tees, hoodies, or both. We’ll recommend the right blanks for your budget.</span>
+        </div>
+        <div class="mini">
+          <strong>2) Design</strong>
+          <span>Upload your artwork or describe the vibe. We set it up crisp and centered.</span>
+        </div>
+        <div class="mini">
+          <strong>3) Approve + Print</strong>
+          <span>You approve the proof, then we print and deliver. No surprises.</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-label="About">
+      <div class="rack">
+        <div class="rackCopy">
+          <h3>Your attitude. Your style. Your tee.</h3>
+          <p>
+            Bold, clean, and built to stand out. Loud or minimal — either way, it’ll look sharp.
+          </p>
+        </div>
+
+        <div class="rackImg" aria-label="Clothing rack image">
+          <img src="urban-rack.png" alt="Clothing rack" />
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="legal">© <span id="year"></span> I Shirt You Not. All rights reserved.</div>
+      <div class="legal">Email: <a href="mailto:ishirtyounotbydawn@gmail.com"><b>ishirtyounotbydawn@gmail.com</b></a></div>
+    </footer>
   </main>
 
-<script>
-  document.getElementById("year").textContent = new Date().getFullYear();
-</script>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
