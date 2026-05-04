@@ -1,58 +1,41 @@
-# I Shirt You Not 
-About Us
-I Shirt You Not is a custom apparel studio specializing in high‑quality, made‑to‑order T‑shirts, hoodies, and other wearable goods. Every piece is crafted with attention to detail, clean alignment, bold color, and long‑lasting prints. Whether you’re outfitting a team, launching merch, or creating something personal, we bring your ideas to life with precision and style.
+██████╗ ██╗   ██╗     ██╗  ██╗██╗   ██╗
+██╔══██╗╚██╗ ██╔╝     ██║  ██║██║   ██║
+██████╔╝ ╚████╔╝      ███████║██║   ██║
+██╔══██╗  ╚██╔╝       ██╔══██║██║   ██║
+██████╔╝   ██║        ██║  ██║╚██████╔╝
+╚═════╝    ╚═╝        ╚═╝  ╚═╝ ╚═════╝ 
+      I   S H I R T   Y O U   N O T
+      ✨ CUSTOM TEES • HOODIES • APPAREL ✨
+   ------------------------------------------------
+      Neon‑bright prints. Clean lines. Bold ink.
+      Apparel that hits harder than your playlist.
+   ------------------------------------------------
 
-What We Do
-We create custom apparel for:
+🔥 WHO WE ARE
+I Shirt You Not is a custom apparel studio built for people who want
+loud designs, clean prints, and zero boring energy.  
+We turn your ideas into wearable heat — tees, hoodies, crewnecks, and more.
 
-Small businesses
+⚡ WHAT WE MAKE
+[ T‑SHIRTS ]   [ HOODIES ]   [ CREWNECKS ]   [ LONG SLEEVES ]
+        If you can wear it, we can print it.
 
-Events & parties
+🌈 WHY WE SLAP
+⚡ Neon‑sharp prints — crisp, durable, and bold
 
-Sports teams
+🚀 Fast turnaround — deadlines don’t scare us
 
-Brands & creators
+💸 Bulk pricing — teams, events, brands, reunions
 
-Schools & organizations
+🧵 Quality garments — no flimsy, see‑through nonsense
 
-Personal one‑off designs
+🧠 Real humans — straight answers, no corporate vibes
 
-Our products include:
+🔧 HOW IT WORKS
+IDEA → QUOTE → PRINT → DELIVERED
+Simple. Clean. No drama.
 
-Custom T‑shirts
-
-Hoodies
-
-Crewnecks
-
-Long sleeves
-
-Specialty garments (on request)
-
-If you can picture it, we can print it.
-
-Why Choose Us
-Quality First — Crisp prints, solid ink, and garments that feel good and last.
-
-Fast Turnaround — Standard and rush options available. Tell us your deadline and we’ll make it happen.
-
-Bulk Pricing — Tiered pricing for large orders so you can stay on budget.
-
-Real Communication — No bots, no runaround. Just real people helping you get exactly what you want.
-
-How to Order
-Send your design or idea
-
-Tell us your garment type, colors, sizes, and quantity
-
-Approve your quote
-
-We print and deliver
-
-Simple, fast, and reliable.
-
-Contact
-For quotes, questions, or custom requests:
-📧 ishirtyounotbydawn@gmail.com
-
-Our Mission
+📬 CONTACT
+ishirtyounotbydawn@gmail.com
+Bring your concept.
+We’ll make it glow.
