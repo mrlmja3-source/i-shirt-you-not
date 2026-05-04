@@ -1,41 +1,37 @@
-██████╗ ██╗   ██╗     ██╗  ██╗██╗   ██╗
-██╔══██╗╚██╗ ██╔╝     ██║  ██║██║   ██║
-██████╔╝ ╚████╔╝      ███████║██║   ██║
-██╔══██╗  ╚██╔╝       ██╔══██║██║   ██║
-██████╔╝   ██║        ██║  ██║╚██████╔╝
-╚═════╝    ╚═╝        ╚═╝  ╚═╝ ╚═════╝ 
-      I   S H I R T   Y O U   N O T
-      ✨ CUSTOM TEES • HOODIES • APPAREL ✨
-   ------------------------------------------------
-      Neon‑bright prints. Clean lines. Bold ink.
-      Apparel that hits harder than your playlist.
-   ------------------------------------------------
+⚡ I Shirt You Not ⚡
+Custom Tees. Custom Hoodies. Custom Everything.
+Made Loud. Made Fast. Made Right.
+Welcome to the place where your ideas get printed with attitude.
+We don’t do boring. We don’t do basic.
+We do clean lines, bold ink, and apparel that hits different.
 
-🔥 WHO WE ARE
-I Shirt You Not is a custom apparel studio built for people who want
-loud designs, clean prints, and zero boring energy.  
-We turn your ideas into wearable heat — tees, hoodies, crewnecks, and more.
+🎨 What We Make
+🔥 Custom T‑Shirts
 
-⚡ WHAT WE MAKE
-[ T‑SHIRTS ]   [ HOODIES ]   [ CREWNECKS ]   [ LONG SLEEVES ]
-        If you can wear it, we can print it.
+❄️ Hoodies & Fleece
 
-🌈 WHY WE SLAP
-⚡ Neon‑sharp prints — crisp, durable, and bold
+💥 Crewnecks & Long Sleeves
 
-🚀 Fast turnaround — deadlines don’t scare us
+🎯 Special Requests (try us)
 
-💸 Bulk pricing — teams, events, brands, reunions
+🚀 Why People Choose Us
+Prints that POP — crisp, sharp, and built to last
 
-🧵 Quality garments — no flimsy, see‑through nonsense
+Fast Turnaround — deadlines don’t scare us
 
-🧠 Real humans — straight answers, no corporate vibes
+Bulk Pricing — events, teams, brands, reunions
 
-🔧 HOW IT WORKS
-IDEA → QUOTE → PRINT → DELIVERED
-Simple. Clean. No drama.
+Real Humans — no bots, no BS, just straight answers
 
-📬 CONTACT
-ishirtyounotbydawn@gmail.com
-Bring your concept.
-We’ll make it glow.
+🛠️ How It Works
+You bring the idea
+
+We bring the heat
+
+You approve the quote
+
+We print it clean, fast, and right
+
+📬 Contact
+ishirtyounotbydawn@gmail.com  
+Bring your concept. We’ll make it wearable.
